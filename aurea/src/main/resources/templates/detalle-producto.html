@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurea — Detalle de Producto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/variables.css">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/layout.css">
+    <link rel="stylesheet" href="/styles/detalle-producto.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+    <input type="checkbox" id="menu-toggle">
+    <div class="header-inner">
+        <a href="/" class="logo">
+            <span class="logo__au">Au</span><span class="logo__rea">rea</span>
+        </a>
+        <nav class="main-nav">
+            <a href="/">Inicio</a>
+            <a href="/productos" class="active">Hombre</a>
+            <a href="/productos">Novedades</a>
+            <a href="/productos">Sale</a>
+        </nav>
+        <div class="header-right">
+            <a href="#" class="hbtn" aria-label="Buscar">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/>
+                </svg>
+            </a>
+            <a href="/login" class="hbtn" aria-label="Mi cuenta">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+            </a>
+            <a href="/bolsa-compra" class="hbtn" aria-label="Bolsa de compra">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+                <span class="cart-dot">0</span>
+            </a>
+        </div>
+        <label for="menu-toggle" class="menu-button" aria-label="Menú">
+            <span></span><span></span><span></span>
+        </label>
+    </div>
+    <nav class="mobile-nav">
+        <a href="/">Inicio</a>
+        <a href="/productos">Hombre</a>
+        <a href="/productos">Novedades</a>
+        <a href="/productos">Sale</a>
+    </nav>
+</header>
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb" aria-label="Ruta de navegación">
+    <div class="breadcrumb__inner">
+        <a href="/">Inicio</a>
+        <span class="breadcrumb__sep">›</span>
+        <a href="/productos">Hombre</a>
+        <span class="breadcrumb__sep">›</span>
+        <a href="/productos">Blazers</a>
+        <span class="breadcrumb__sep">›</span>
+        <span class="breadcrumb__current">Blazer Clásico Negro</span>
+    </div>
+</nav>
+
+<!-- Detalle -->
+<main class="detalle-page">
+    <div class="detalle-inner">
+
+        <!-- Galería -->
+        <section class="detalle-galeria">
+            <div class="detalle-galeria__principal">
+                <img class="detalle-galeria__img" src="/imgs/blazer-negro.jpg" alt="Blazer Clásico Negro" id="imgPrincipal">
+                <span class="detalle-badge">Nuevo</span>
+            </div>
+            <div class="detalle-galeria__thumbs">
+                <button class="thumb thumb--active" onclick="cambiarImg(this, '/imgs/blazer-negro.jpg')">
+                    <img src="/imgs/blazer-negro.jpg" alt="Negro">
+                </button>
+                <button class="thumb" onclick="cambiarImg(this, '/imgs/blazer-cafe.jpg')">
+                    <img src="/imgs/blazer-cafe.jpg" alt="Café">
+                </button>
+                <button class="thumb" onclick="cambiarImg(this, '/imgs/blazer-rosa.jpg')">
+                    <img src="/imgs/blazer-rosa.jpg" alt="Rosa">
+                </button>
+            </div>
+        </section>
+
+        <!-- Info -->
+        <section class="detalle-info">
+            <p class="detalle-info__cat">Blazers</p>
+            <h1 class="detalle-info__nombre">Blazer Clásico</h1>
+
+            <div class="detalle-info__precio-wrap">
+                <span class="detalle-info__precio">$2,490</span>
+            </div>
+
+            <div class="detalle-info__resenas">
+                <div class="estrellas">
+                    <span class="estrella estrella--on">★</span>
+                    <span class="estrella estrella--on">★</span>
+                    <span class="estrella estrella--on">★</span>
+                    <span class="estrella estrella--on">★</span>
+                    <span class="estrella estrella--off">★</span>
+                </div>
+                <span class="detalle-info__resenas-count">4.0 (8 reseñas)</span>
+            </div>
+
+            <p class="detalle-info__desc">
+                Blazer de corte clásico en tela de alta calidad. Ideal para ocasiones formales
+                o semi-formales. Forro interior suave, botones metálicos y bolsillos funcionales.
+                Disponible en tres colores.
+            </p>
+
+            <hr class="detalle-divider">
+
+            <div class="detalle-opcion">
+                <div class="detalle-opcion__header">
+                    <span class="detalle-opcion__label">Talla</span>
+                    <a href="#" class="detalle-opcion__guia">Guía de tallas</a>
+                </div>
+                <div class="tallas">
+                    <button class="talla" onclick="seleccionarTalla(this)">XS</button>
+                    <button class="talla" onclick="seleccionarTalla(this)">S</button>
+                    <button class="talla talla--active" onclick="seleccionarTalla(this)">M</button>
+                    <button class="talla" onclick="seleccionarTalla(this)">L</button>
+                    <button class="talla" onclick="seleccionarTalla(this)">XL</button>
+                    <button class="talla talla--agotada" disabled>XXL</button>
+                </div>
+            </div>
+
+            <div class="detalle-opcion">
+                <span class="detalle-opcion__label">Cantidad</span>
+                <div class="cantidad">
+                    <button class="cantidad__btn" onclick="cambiarCantidad(-1)">−</button>
+                    <span class="cantidad__valor" id="cantidadValor">1</span>
+                    <button class="cantidad__btn" onclick="cambiarCantidad(1)">+</button>
+                </div>
+                <span class="detalle-stock">3 disponibles</span>
+            </div>
+
+            <hr class="detalle-divider">
+
+            <div class="detalle-acciones">
+                <button class="btn-agregar" onclick="agregarBolsa()">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" width="18" height="18">
+                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 0 1-8 0"/>
+                    </svg>
+                    Agregar a la bolsa
+                </button>
+                <button class="btn-favorito" aria-label="Guardar en favoritos">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" width="20" height="20">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="detalle-confirm" id="confirmMsg">
+                ✓ Producto agregado a tu bolsa
+            </div>
+
+            <div class="detalle-extra">
+                <div class="detalle-extra__item">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="18" height="18">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                    <span>Envío gratis en compras mayores a $1,500 MXN</span>
+                </div>
+                <div class="detalle-extra__item">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="18" height="18">
+                        <path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3z"/>
+                    </svg>
+                    <span>Devoluciones gratis en 30 días</span>
+                </div>
+                <div class="detalle-extra__item">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="18" height="18">
+                        <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                    <span>Compra 100% segura</span>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</main>
+
+<!-- Reseñas -->
+<section class="resenas-section">
+    <div class="resenas-inner">
+        <h2 class="resenas-titulo">Reseñas del producto</h2>
+        <div class="resenas-grid">
+            <article class="resena-card">
+                <div class="resena-card__header">
+                    <div class="estrellas">
+                        <span class="estrella estrella--on">★</span>
+                        <span class="estrella estrella--on">★</span>
+                        <span class="estrella estrella--on">★</span>
+                        <span class="estrella estrella--on">★</span>
+                        <span class="estrella estrella--on">★</span>
+                    </div>
+                    <span class="resena-card__fecha">Mayo 2025</span>
+                </div>
+                <p class="resena-card__autor">Carlos M.</p>
+                <p class="resena-card__texto">Excelente calidad, el corte es perfecto y la tela muy buena. Lo usé para una boda y recibí muchos cumplidos.</p>
+            </article>
+            <article class="resena-card">
+                <div class="resena-card__header">
+                    <div class="estrellas">
+                        <span class="estrella estrella--on">★</span>
+                        <span class="estrella estrella--on">★</span>
+                        <span class="estrella estrella--on">★</span>
+                        <span class="estrella estrella--on">★</span>
+                        <span class="estrella estrella--off">★</span>
+                    </div>
+                    <span class="resena-card__fecha">Abril 2025</span>
+                </div>
+                <p class="resena-card__autor">Luis R.</p>
+                <p class="resena-card__texto">Muy buen blazer, el negro es muy elegante. Le quito una estrella porque el tallaje corre un poco grande.</p>
+            </article>
+            <article class="resena-card">
+                <div class="resena-card__header">
+                    <div class="estrellas">
+                        <span class="estrella estrella--on">★</span>
+                        <span class="estrella estrella--on">★</span>
+                        <span class="estrella estrella--on">★</span>
+                        <span class="estrella estrella--on">★</span>
+                        <span class="estrella estrella--off">★</span>
+                    </div>
+                    <span class="resena-card__fecha">Marzo 2025</span>
+                </div>
+                <p class="resena-card__autor">Andrés V.</p>
+                <p class="resena-card__texto">Buena calidad por el precio. Las miniaturas de colores son muy útiles para ver las opciones disponibles.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-top">
+        <div>
+            <p class="fcol-title">Aurea</p>
+            <div class="fcol-links">
+                <a href="/productos">Nueva Colección</a>
+                <a href="/productos">Camisas</a>
+                <a href="/productos">Polos</a>
+                <a href="/productos">Pantalones</a>
+                <a href="/productos">Sale</a>
+            </div>
+        </div>
+        <div>
+            <p class="fcol-title">Ayuda</p>
+            <div class="fcol-links">
+                <a href="#">Guía de Tallas</a>
+                <a href="#">Envíos y Devoluciones</a>
+                <a href="#">Preguntas Frecuentes</a>
+                <a href="#">Contacto</a>
+            </div>
+        </div>
+        <div>
+            <p class="fcol-title">Empresa</p>
+            <div class="fcol-links">
+                <a href="#">Sobre Aurea</a>
+                <a href="#">Sustentabilidad</a>
+                <a href="#">Trabaja con Nosotros</a>
+                <a href="#">Prensa</a>
+            </div>
+        </div>
+        <div>
+            <p class="fcol-title">Síguenos</p>
+            <div class="fcol-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Pinterest</a>
+                <a href="#">TikTok</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Aurea. Todos los derechos reservados.</p>
+        <div class="fpays">
+            <span>VISA</span><span>MC</span><span>AMEX</span><span>OXXO</span><span>PayPal</span>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+</html>

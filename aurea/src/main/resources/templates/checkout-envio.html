@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurea — Checkout · Datos de Envío</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/variables.css">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/layout.css">
+    <link rel="stylesheet" href="/styles/checkout.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+    <input type="checkbox" id="menu-toggle">
+    <div class="header-inner">
+        <a href="/" class="logo">
+            <span class="logo__au">Au</span><span class="logo__rea">rea</span>
+        </a>
+        <nav class="main-nav">
+            <a href="/">Inicio</a>
+            <a href="/productos">Hombre</a>
+            <a href="/productos">Novedades</a>
+            <a href="/productos">Sale</a>
+        </nav>
+        <div class="header-right">
+            <a href="#" class="hbtn" aria-label="Buscar">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/>
+                </svg>
+            </a>
+            <a href="/login" class="hbtn" aria-label="Mi cuenta">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+            </a>
+            <a href="/bolsa-compra" class="hbtn" aria-label="Bolsa de compra">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+                <span class="cart-dot">3</span>
+            </a>
+        </div>
+        <label for="menu-toggle" class="menu-button" aria-label="Menú">
+            <span></span><span></span><span></span>
+        </label>
+    </div>
+    <nav class="mobile-nav">
+        <a href="/">Inicio</a>
+        <a href="/productos">Hombre</a>
+        <a href="/productos">Novedades</a>
+        <a href="/productos">Sale</a>
+    </nav>
+</header>
+
+<!-- Stepper -->
+<div class="checkout-stepper">
+    <div class="checkout-step checkout-step--activo">
+        <div class="checkout-step__num">1</div>
+        <span class="checkout-step__label">Envío</span>
+    </div>
+    <div class="checkout-step__linea"></div>
+    <div class="checkout-step">
+        <div class="checkout-step__num">2</div>
+        <span class="checkout-step__label">Pago</span>
+    </div>
+    <div class="checkout-step__linea"></div>
+    <div class="checkout-step">
+        <div class="checkout-step__num">3</div>
+        <span class="checkout-step__label">Confirmación</span>
+    </div>
+</div>
+
+<!-- Contenido principal -->
+<main class="checkout-page">
+
+    <!-- columna izquierda: formulario -->
+    <section class="checkout-form">
+
+        <h1 class="checkout-form__titulo">Datos de envío</h1>
+
+        <!-- información de contacto -->
+        <fieldset class="checkout-fieldset">
+            <legend class="checkout-fieldset__legend">Información de contacto</legend>
+            <div class="checkout-grid">
+                <div class="checkout-campo">
+                    <label for="nombre" class="checkout-campo__label">Nombre</label>
+                    <input
+                            id="nombre"
+                            class="checkout-campo__input"
+                            type="text"
+                            name="nombre"
+                            placeholder="Jesús Rodrigo"
+                            required
+                    >
+                </div>
+                <div class="checkout-campo">
+                    <label for="apellido" class="checkout-campo__label">Apellido</label>
+                    <input
+                            id="apellido"
+                            class="checkout-campo__input"
+                            type="text"
+                            name="apellido"
+                            placeholder="Villegas Argüelles"
+                            required
+                    >
+                </div>
+                <div class="checkout-campo checkout-campo--completo">
+                    <label for="email" class="checkout-campo__label">Correo electrónico</label>
+                    <input
+                            id="email"
+                            class="checkout-campo__input"
+                            type="email"
+                            name="email"
+                            placeholder="correo@ejemplo.com"
+                            required
+                    >
+                </div>
+                <div class="checkout-campo checkout-campo--completo">
+                    <label for="telefono" class="checkout-campo__label">Teléfono</label>
+                    <input
+                            id="telefono"
+                            class="checkout-campo__input"
+                            type="tel"
+                            name="telefono"
+                            placeholder="+52 644 000 0000"
+                            required
+                    >
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- dirección de entrega -->
+        <fieldset class="checkout-fieldset">
+            <legend class="checkout-fieldset__legend">Dirección de entrega</legend>
+            <div class="checkout-grid">
+                <div class="checkout-campo checkout-campo--completo">
+                    <label for="calle" class="checkout-campo__label">Calle y número</label>
+                    <input
+                            id="calle"
+                            class="checkout-campo__input"
+                            type="text"
+                            name="calle"
+                            placeholder="Blvd. García Morales 123"
+                            required
+                    >
+                </div>
+                <div class="checkout-campo checkout-campo--completo">
+                    <label for="colonia" class="checkout-campo__label">Colonia</label>
+                    <input
+                            id="colonia"
+                            class="checkout-campo__input"
+                            type="text"
+                            name="colonia"
+                            placeholder="Centro"
+                            required
+                    >
+                </div>
+                <div class="checkout-campo">
+                    <label for="ciudad" class="checkout-campo__label">Ciudad</label>
+                    <input
+                            id="ciudad"
+                            class="checkout-campo__input"
+                            type="text"
+                            name="ciudad"
+                            placeholder="Ciudad Obregón"
+                            required
+                    >
+                </div>
+                <div class="checkout-campo">
+                    <label for="estado" class="checkout-campo__label">Estado</label>
+                    <select id="estado" class="checkout-campo__select" name="estado" required>
+                        <option value="">Seleccionar</option>
+                        <option value="AGS">Aguascalientes</option>
+                        <option value="BC">Baja California</option>
+                        <option value="BCS">Baja California Sur</option>
+                        <option value="CAMP">Campeche</option>
+                        <option value="CHIS">Chiapas</option>
+                        <option value="CHIH">Chihuahua</option>
+                        <option value="CDMX">Ciudad de México</option>
+                        <option value="COAH">Coahuila</option>
+                        <option value="COL">Colima</option>
+                        <option value="DGO">Durango</option>
+                        <option value="GTO">Guanajuato</option>
+                        <option value="GRO">Guerrero</option>
+                        <option value="HGO">Hidalgo</option>
+                        <option value="JAL">Jalisco</option>
+                        <option value="MEX">Estado de México</option>
+                        <option value="MICH">Michoacán</option>
+                        <option value="MOR">Morelos</option>
+                        <option value="NAY">Nayarit</option>
+                        <option value="NL">Nuevo León</option>
+                        <option value="OAX">Oaxaca</option>
+                        <option value="PUE">Puebla</option>
+                        <option value="QRO">Querétaro</option>
+                        <option value="QROO">Quintana Roo</option>
+                        <option value="SLP">San Luis Potosí</option>
+                        <option value="SIN">Sinaloa</option>
+                        <option value="SON" selected>Sonora</option>
+                        <option value="TAB">Tabasco</option>
+                        <option value="TAMPS">Tamaulipas</option>
+                        <option value="TLAX">Tlaxcala</option>
+                        <option value="VER">Veracruz</option>
+                        <option value="YUC">Yucatán</option>
+                        <option value="ZAC">Zacatecas</option>
+                    </select>
+                </div>
+                <div class="checkout-campo">
+                    <label for="cp" class="checkout-campo__label">Código postal</label>
+                    <input
+                            id="cp"
+                            class="checkout-campo__input"
+                            type="text"
+                            name="codigoPostal"
+                            placeholder="85000"
+                            maxlength="5"
+                            required
+                    >
+                </div>
+                <div class="checkout-campo">
+                    <label for="pais" class="checkout-campo__label">País</label>
+                    <select id="pais" class="checkout-campo__select" name="pais" required>
+                        <option value="MX" selected>México</option>
+                    </select>
+                </div>
+                <div class="checkout-campo checkout-campo--completo">
+                    <label for="referencias" class="checkout-campo__label">Referencias <span class="checkout-campo__opcional">(opcional)</span></label>
+                    <input
+                            id="referencias"
+                            class="checkout-campo__input"
+                            type="text"
+                            name="referencias"
+                            placeholder="Entre calles, color de fachada..."
+                    >
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- método de envío -->
+        <fieldset class="checkout-fieldset">
+            <legend class="checkout-fieldset__legend">Método de envío</legend>
+            <div class="checkout-envio-opciones">
+
+                <label class="checkout-envio-opcion checkout-envio-opcion--activa">
+                    <input
+                            type="radio"
+                            name="metodoEnvio"
+                            value="estandar"
+                            class="checkout-envio-opcion__radio-input"
+                            checked
+                    >
+                    <div class="checkout-envio-opcion__radio"></div>
+                    <div class="checkout-envio-opcion__info">
+                        <span class="checkout-envio-opcion__nombre">Envío estándar</span>
+                        <span class="checkout-envio-opcion__eta">5–7 días hábiles</span>
+                    </div>
+                    <span class="checkout-envio-opcion__precio checkout-envio-opcion__precio--gratis">Gratis</span>
+                </label>
+
+                <label class="checkout-envio-opcion">
+                    <input
+                            type="radio"
+                            name="metodoEnvio"
+                            value="express"
+                            class="checkout-envio-opcion__radio-input"
+                    >
+                    <div class="checkout-envio-opcion__radio"></div>
+                    <div class="checkout-envio-opcion__info">
+                        <span class="checkout-envio-opcion__nombre">Envío express</span>
+                        <span class="checkout-envio-opcion__eta">1–3 días hábiles</span>
+                    </div>
+                    <span class="checkout-envio-opcion__precio">$149</span>
+                </label>
+
+            </div>
+        </fieldset>
+
+        <!-- botones de navegación -->
+        <div class="checkout-acciones">
+            <a href="/bolsa-compra" class="checkout-acciones__volver">← Volver a la bolsa</a>
+            <a href="checkout-pago"><button type="submit" class="checkout-acciones__siguiente">Continuar con el pago</button></a>
+        </div>
+
+    </section>
+
+    <!-- columna derecha: resumen de orden -->
+    <aside class="checkout-resumen">
+
+        <h2 class="checkout-resumen__titulo">Resumen de orden</h2>
+
+        <!-- artículo 1 -->
+        <div class="checkout-resumen__articulo">
+            <div class="checkout-resumen__img">
+                <img src="/imgs/polo-cafe.png" alt="Polo Café">
+                <span class="checkout-resumen__badge">1</span>
+            </div>
+            <div class="checkout-resumen__info">
+                <p class="checkout-resumen__nombre">Polo Café</p>
+                <p class="checkout-resumen__meta">Talla M · Café</p>
+            </div>
+            <span class="checkout-resumen__precio">$649</span>
+        </div>
+
+        <!-- artículo 2 -->
+        <div class="checkout-resumen__articulo">
+            <div class="checkout-resumen__img">
+                <img src="/imgs/jacket-cafe.png" alt="Jacket Café">
+                <span class="checkout-resumen__badge">1</span>
+            </div>
+            <div class="checkout-resumen__info">
+                <p class="checkout-resumen__nombre">Jacket Café</p>
+                <p class="checkout-resumen__meta">Talla L · Café oscuro</p>
+            </div>
+            <span class="checkout-resumen__precio">$1,299</span>
+        </div>
+
+        <!-- artículo 3 -->
+        <div class="checkout-resumen__articulo">
+            <div class="checkout-resumen__img">
+                <img src="/imgs/bermuda-blanca.png" alt="Bermuda Blanca">
+                <span class="checkout-resumen__badge">2</span>
+            </div>
+            <div class="checkout-resumen__info">
+                <p class="checkout-resumen__nombre">Bermuda Blanca</p>
+                <p class="checkout-resumen__meta">Talla S · Blanco</p>
+            </div>
+            <span class="checkout-resumen__precio">$958</span>
+        </div>
+
+        <hr class="checkout-resumen__divider">
+
+        <div class="checkout-resumen__fila checkout-resumen__fila--muted">
+            <span>Subtotal</span>
+            <span>$3,006</span>
+        </div>
+        <div class="checkout-resumen__fila checkout-resumen__fila--muted">
+            <span>Descuento (Sale)</span>
+            <span class="checkout-resumen__descuento">−$120</span>
+        </div>
+        <div class="checkout-resumen__fila checkout-resumen__fila--muted">
+            <span>Envío</span>
+            <span class="checkout-resumen__tag-gratis">Gratis</span>
+        </div>
+        <div class="checkout-resumen__fila checkout-resumen__fila--total">
+            <span>Total</span>
+            <span>$2,886 MXN</span>
+        </div>
+
+    </aside>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-top">
+        <div>
+            <p class="fcol-title">Aurea</p>
+            <div class="fcol-links">
+                <a href="/productos">Nueva Colección</a>
+                <a href="/productos">Camisas</a>
+                <a href="/productos">Polos</a>
+                <a href="/productos">Pantalones</a>
+                <a href="/productos">Sale</a>
+            </div>
+        </div>
+        <div>
+            <p class="fcol-title">Ayuda</p>
+            <div class="fcol-links">
+                <a href="#">Guía de Tallas</a>
+                <a href="#">Envíos y Devoluciones</a>
+                <a href="#">Preguntas Frecuentes</a>
+                <a href="#">Contacto</a>
+            </div>
+        </div>
+        <div>
+            <p class="fcol-title">Empresa</p>
+            <div class="fcol-links">
+                <a href="#">Sobre Aurea</a>
+                <a href="#">Sustentabilidad</a>
+                <a href="#">Trabaja con Nosotros</a>
+                <a href="#">Prensa</a>
+            </div>
+        </div>
+        <div>
+            <p class="fcol-title">Síguenos</p>
+            <div class="fcol-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Pinterest</a>
+                <a href="#">TikTok</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Aurea. Todos los derechos reservados.</p>
+        <div class="fpays">
+            <span>VISA</span><span>MC</span><span>AMEX</span><span>OXXO</span><span>PayPal</span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

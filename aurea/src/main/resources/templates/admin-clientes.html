@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clientes — Aurea Admin</title>
+  <link rel="stylesheet" th:href="@{/styles/admin-styles.css}">
+  <link rel="stylesheet" th:href="@{/styles/variables.css}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+
+<div class="admin-wrapper">
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <a th:href="@{/}" class="topbar-logo">
+      <span class="au">AU</span><span class="rea">REA</span>
+    </a>
+    <span class="topbar-center">Panel de Administración</span>
+    <div class="topbar-icons">
+      <a th:href="@{/}" class="topbar-icon-btn" title="Ir al inicio">
+        <i class="ti ti-home"></i>
+      </a>
+      <a th:href="@{/admin/logout}" class="topbar-icon-btn dark" title="Cerrar sesión">
+        <i class="ti ti-logout"></i>
+      </a>
+    </div>
+  </header>
+
+  <div class="admin-body">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+
+        <div class="sidebar-admin">
+          <p class="label">Administrador</p>
+          <p class="name" th:text="${adminNombre}">Carlos López</p>
+          <p class="role" th:text="${adminRol}">Super Admin</p>
+        </div>
+
+        <p class="sidebar-section-label">General</p>
+        <a th:href="@{/admin/dashboard}" class="sidebar-item">
+          <div class="sidebar-item-left">
+            <i class="ti ti-layout-dashboard"></i>
+            Dashboard
+          </div>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <p class="sidebar-section-label">Catálogo</p>
+        <a th:href="@{/admin/productos}" class="sidebar-item">
+          <div class="sidebar-item-left">
+            <i class="ti ti-shirt"></i>
+            Productos
+          </div>
+          <span class="badge" th:text="${totalProductos}">89</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <p class="sidebar-section-label">Ventas</p>
+        <a th:href="@{/admin/pedidos}" class="sidebar-item">
+          <div class="sidebar-item-left">
+            <i class="ti ti-package"></i>
+            Pedidos
+          </div>
+          <span class="badge" th:text="${pedidosPendientes}">4</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <p class="sidebar-section-label">Comunidad</p>
+        <a th:href="@{/admin/resenas}" class="sidebar-item">
+          <div class="sidebar-item-left">
+            <i class="ti ti-message-circle"></i>
+            Reseñas
+          </div>
+          <span class="badge" th:text="${resenasPendientes}">7</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <p class="sidebar-section-label">Clientes</p>
+        <a th:href="@{/admin/clientes}" class="sidebar-item active">
+          <div class="sidebar-item-left">
+            <i class="ti ti-users"></i>
+            Clientes
+          </div>
+          <span class="badge" th:text="${totalClientes}">248</span>
+        </a>
+
+      </div>
+
+      <a th:href="@{/admin/logout}" class="sidebar-logout">
+        <i class="ti ti-logout"></i>
+        Cerrar sesión
+      </a>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Clientes</h1>
+          <p class="page-subtitle" th:text="${totalClientes + ' clientes registrados'}">248 clientes registrados</p>
+        </div>
+      </div>
+
+      <!-- buscador y filtros -->
+      <div class="toolbar">
+        <div class="search-wrap">
+          <i class="ti ti-search"></i>
+          <input class="search-input" type="text" placeholder="Buscar por nombre o correo...">
+        </div>
+        <div class="filtros-bar">
+          <a th:href="@{/admin/clientes}" class="pill active">Todos</a>
+          <a th:href="@{/admin/clientes(filtro='activos')}" class="pill">Activos</a>
+          <a th:href="@{/admin/clientes(filtro='inactivos')}" class="pill">Inactivos</a>
+        </div>
+      </div>
+
+      <!-- tabla de clientes -->
+      <div class="table-card">
+        <table class="clientes-table">
+          <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Registro</th>
+            <th>Compras</th>
+            <th>Total gastado</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="cliente : ${clientes}">
+            <td>
+              <div class="cliente-cell">
+                <div class="cliente-avatar" th:text="${#strings.toUpperCase(#strings.substring(cliente.nombre, 0, 2))}">DR</div>
+                <div>
+                  <div class="cliente-nombre" th:text="${cliente.nombre}">Diego Ramírez</div>
+                  <div class="cliente-email" th:text="${cliente.email}">diego.r@email.com</div>
+                </div>
+              </div>
+            </td>
+            <td th:text="${cliente.fechaRegistro}">10 ene 2026</td>
+            <td>
+              <span class="compras-val" th:text="${cliente.totalCompras}">8</span>
+            </td>
+            <td>
+              <span class="monto-val" th:text="${'$' + cliente.totalGastado}">$14,320</span>
+            </td>
+            <td>
+                                <span class="estado-badge"
+                                      th:text="${cliente.estado}"
+                                      th:classappend="${cliente.estado == 'Activo'} ? 'estado-activo' : 'estado-inactivo'">
+                                    Activo
+                                </span>
+            </td>
+            <td>
+              <div class="row-actions">
+                <a th:href="@{/admin/clientes/detalle(id=${cliente.id})}" class="act-btn" title="Ver detalle">
+                  <i class="ti ti-eye"></i>
+                </a>
+                <a th:href="@{/admin/clientes/bloquear(id=${cliente.id})}" class="act-btn danger" title="Bloquear">
+                  <i class="ti ti-ban"></i>
+                </a>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="table-footer">
+                    <span class="table-info" th:text="'Mostrando ' + ${clientes.size()} + ' de ' + ${totalClientes} + ' clientes'">
+                        Mostrando 6 de 248 clientes
+                    </span>
+          <div class="pagination">
+            <span class="page-btn"><i class="ti ti-chevron-left"></i></span>
+            <span class="page-btn active">1</span>
+            <span class="page-btn">2</span>
+            <span class="page-btn">3</span>
+            <span class="page-btn"><i class="ti ti-chevron-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>

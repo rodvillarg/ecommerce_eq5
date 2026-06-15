@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Aurea Admin</title>
+  <link rel="stylesheet" th:href="@{/styles/admin-styles.css}">
+  <link rel="stylesheet" th:href="@{/styles/variables.css}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+
+<div class="admin-wrapper">
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <a th:href="@{/}" class="topbar-logo">
+      <span class="au">AU</span><span class="rea">REA</span>
+    </a>
+    <span class="topbar-center">Panel de Administración</span>
+    <div class="topbar-icons">
+      <a th:href="@{/}" class="topbar-icon-btn" title="Ir al inicio">
+        <i class="ti ti-home"></i>
+      </a>
+      <a th:href="@{/admin/logout}" class="topbar-icon-btn dark" title="Cerrar sesión">
+        <i class="ti ti-logout"></i>
+      </a>
+    </div>
+  </header>
+
+  <div class="admin-body">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+
+        <div class="sidebar-admin">
+          <p class="label">Administrador</p>
+          <p class="name" th:text="${adminNombre}">Carlos López</p>
+          <p class="role" th:text="${adminRol}">Super Admin</p>
+        </div>
+
+        <p class="sidebar-section-label">General</p>
+        <a th:href="@{/admin/dashboard}" class="sidebar-item active">
+          <div class="sidebar-item-left">
+            <i class="ti ti-layout-dashboard"></i>
+            Dashboard
+          </div>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <p class="sidebar-section-label">Catálogo</p>
+        <a th:href="@{/admin/productos}" class="sidebar-item">
+          <div class="sidebar-item-left">
+            <i class="ti ti-shirt"></i>
+            Productos
+          </div>
+          <span class="badge" th:text="${totalProductos}">89</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <p class="sidebar-section-label">Ventas</p>
+        <a th:href="@{/admin/pedidos}" class="sidebar-item">
+          <div class="sidebar-item-left">
+            <i class="ti ti-package"></i>
+            Pedidos
+          </div>
+          <span class="badge" th:text="${pedidosPendientes}">4</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <p class="sidebar-section-label">Comunidad</p>
+        <a th:href="@{/admin/resenas}" class="sidebar-item">
+          <div class="sidebar-item-left">
+            <i class="ti ti-message-circle"></i>
+            Reseñas
+          </div>
+          <span class="badge" th:text="${resenasPendientes}">7</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <p class="sidebar-section-label">Clientes</p>
+        <a th:href="@{/admin/clientes}" class="sidebar-item">
+          <div class="sidebar-item-left">
+            <i class="ti ti-users"></i>
+            Clientes
+          </div>
+          <span class="badge" th:text="${clientesActivos}">248</span>
+        </a>
+
+      </div>
+
+      <a th:href="@{/admin/logout}" class="sidebar-logout">
+        <i class="ti ti-logout"></i>
+        Cerrar sesión
+      </a>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Dashboard</h1>
+          <p class="page-subtitle">Resumen general — junio 2026</p>
+        </div>
+        <p class="last-updated">Última actualización: hace 5 min</p>
+      </div>
+
+      <!-- tarjetas de métricas -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <p class="metric-label">Ventas del mes</p>
+          <p class="metric-value" th:text="${'$' + ventasMes}">$248,430</p>
+          <p class="metric-trend up">
+            <i class="ti ti-trending-up"></i> 12% vs mes anterior
+          </p>
+        </div>
+        <div class="metric-card">
+          <p class="metric-label">Pedidos nuevos</p>
+          <p class="metric-value" th:text="${pedidosNuevos}">84</p>
+          <p class="metric-trend up">
+            <i class="ti ti-trending-up"></i> 8% vs mes anterior
+          </p>
+        </div>
+        <div class="metric-card">
+          <p class="metric-label">Clientes activos</p>
+          <p class="metric-value" th:text="${clientesActivos}">1,248</p>
+          <p class="metric-trend up">
+            <i class="ti ti-trending-up"></i> 5% vs mes anterior
+          </p>
+        </div>
+        <div class="metric-card">
+          <p class="metric-label">Reseñas pendientes</p>
+          <p class="metric-value" th:text="${resenasPendientes}">7</p>
+          <p class="metric-trend down">
+            <i class="ti ti-alert-triangle"></i> Requieren moderación
+          </p>
+        </div>
+      </div>
+
+      <!-- sección inferior -->
+      <div class="bottom-grid">
+
+        <!-- pedidos recientes -->
+        <div class="section-card">
+          <div class="section-card-header">
+            <span class="section-card-title">Pedidos recientes</span>
+            <a th:href="@{/admin/pedidos}" class="btn-ver-todos">Ver todos</a>
+          </div>
+          <table class="pedidos-table">
+            <thead>
+            <tr>
+              <th>Pedido</th>
+              <th>Cliente</th>
+              <th>Total</th>
+              <th>Estado</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pedido : ${pedidosRecientes}">
+              <td th:text="${pedido.codigo}">#AUR-0741</td>
+              <td th:text="${pedido.clienteNombre}">Ana García</td>
+              <td th:text="${'$' + pedido.total}">$4,150</td>
+              <td>
+                  <span th:text="${pedido.estado}"
+                        th:classappend="${pedido.estado == 'Enviado'} ? 'estado-enviado' : (${pedido.estado == 'En proceso'} ? 'estado-proceso' : 'estado-pendiente')"
+                        class="estado-badge">
+                    Enviado
+                  </span>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- más vendidos -->
+        <div class="section-card">
+          <div class="section-card-header">
+            <span class="section-card-title">Más vendidos</span>
+          </div>
+          <div th:each="producto : ${masVendidos}" class="producto-item">
+            <div class="producto-info">
+              <div class="producto-nombre-row">
+                <span class="nombre" th:text="${producto.nombre}">Blazer Negro Casual</span>
+                <span th:if="${producto.stock <= 2}" class="stock-dot"></span>
+              </div>
+              <div class="precio">
+                <span th:text="${'$' + producto.precio}">$1,299</span>
+                <span th:if="${producto.stock <= 2}" class="stock-label">&nbsp;Stock bajo</span>
+              </div>
+            </div>
+            <span class="producto-uds" th:text="${producto.stock + ' uds.'}">2 uds.</span>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+</div>
+
+</body>
+</html>

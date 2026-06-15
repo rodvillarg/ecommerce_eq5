@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Producto — Aurea Admin</title>
+    <link rel="stylesheet" th:href="@{/styles/admin-styles.css}">
+    <link rel="stylesheet" th:href="@{/styles/variables.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+
+<div class="admin-wrapper">
+
+    <!-- Topbar -->
+    <header class="topbar">
+        <a th:href="@{/}" class="topbar-logo">
+            <span class="au">AU</span><span class="rea">REA</span>
+        </a>
+        <span class="topbar-center">Panel de Administración</span>
+        <div class="topbar-icons">
+            <a th:href="@{/}" class="topbar-icon-btn" title="Ir al inicio">
+                <i class="ti ti-home"></i>
+            </a>
+            <a th:href="@{/admin/logout}" class="topbar-icon-btn dark" title="Cerrar sesión">
+                <i class="ti ti-logout"></i>
+            </a>
+        </div>
+    </header>
+
+    <div class="admin-body">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+
+                <div class="sidebar-admin">
+                    <p class="label">Administrador</p>
+                    <p class="name" th:text="${adminNombre}">Carlos López</p>
+                    <p class="role" th:text="${adminRol}">Super Admin</p>
+                </div>
+
+                <p class="sidebar-section-label">General</p>
+                <a th:href="@{/admin/dashboard}" class="sidebar-item">
+                    <div class="sidebar-item-left">
+                        <i class="ti ti-layout-dashboard"></i>
+                        Dashboard
+                    </div>
+                </a>
+
+                <div class="sidebar-divider"></div>
+
+                <p class="sidebar-section-label">Catálogo</p>
+                <a th:href="@{/admin/productos}" class="sidebar-item active">
+                    <div class="sidebar-item-left">
+                        <i class="ti ti-shirt"></i>
+                        Productos
+                    </div>
+                    <span class="badge" th:text="${totalProductos}">89</span>
+                </a>
+
+                <div class="sidebar-divider"></div>
+
+                <p class="sidebar-section-label">Ventas</p>
+                <a th:href="@{/admin/pedidos}" class="sidebar-item">
+                    <div class="sidebar-item-left">
+                        <i class="ti ti-package"></i>
+                        Pedidos
+                    </div>
+                    <span class="badge" th:text="${pedidosPendientes}">4</span>
+                </a>
+
+                <div class="sidebar-divider"></div>
+
+                <p class="sidebar-section-label">Comunidad</p>
+                <a th:href="@{/admin/resenas}" class="sidebar-item">
+                    <div class="sidebar-item-left">
+                        <i class="ti ti-message-circle"></i>
+                        Reseñas
+                    </div>
+                    <span class="badge" th:text="${resenasPendientes}">7</span>
+                </a>
+
+                <div class="sidebar-divider"></div>
+
+                <p class="sidebar-section-label">Clientes</p>
+                <a th:href="@{/admin/clientes}" class="sidebar-item">
+                    <div class="sidebar-item-left">
+                        <i class="ti ti-users"></i>
+                        Clientes
+                    </div>
+                    <span class="badge" th:text="${totalClientes}">248</span>
+                </a>
+
+            </div>
+
+            <a th:href="@{/admin/logout}" class="sidebar-logout">
+                <i class="ti ti-logout"></i>
+                Cerrar sesión
+            </a>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="main-content">
+
+            <a th:href="@{/admin/productos}" class="back-link">
+                <i class="ti ti-arrow-left"></i> Volver a productos
+            </a>
+
+            <div class="page-header" style="margin-bottom: 20px;">
+                <div>
+                    <h1 class="page-title">Agregar producto</h1>
+                    <p class="page-subtitle">Completa la información del nuevo producto</p>
+                </div>
+            </div>
+
+            <form th:action="@{/admin/productos/guardar}" method="post" enctype="multipart/form-data">
+
+                <div class="form-layout">
+
+                    <!-- columna izquierda -->
+                    <div class="form-column">
+
+                        <div class="form-card">
+                            <p class="form-card-title">Información general</p>
+
+                            <div class="form-group">
+                                <label class="form-label">Nombre <span class="required">*</span></label>
+                                <input class="form-control" type="text" name="nombre" placeholder="Ej. Blazer Negro Casual" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Descripción <span class="required">*</span></label>
+                                <textarea class="form-control" name="descripcion" rows="3" placeholder="Describe el producto..." required></textarea>
+                            </div>
+
+                            <div class="form-row-2">
+                                <div class="form-group">
+                                    <label class="form-label">Precio (MXN) <span class="required">*</span></label>
+                                    <input class="form-control" type="number" name="precio" placeholder="0.00" step="0.01" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Stock <span class="required">*</span></label>
+                                    <input class="form-control" type="number" name="stock" placeholder="0" min="0" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-card">
+                            <p class="form-card-title">Categoría</p>
+                            <div class="form-group">
+                                <label class="form-label">Categoría <span class="required">*</span></label>
+                                <select class="form-control" name="categoria" required>
+                                    <option value="">-- Seleccionar --</option>
+                                    <option value="Camisas">Camisas</option>
+                                    <option value="Bermudas">Bermudas</option>
+                                    <option value="Jeans">Jeans</option>
+                                    <option value="Blazers">Blazers</option>
+                                    <option value="Jackets">Jackets</option>
+                                    <option value="Polos">Polos</option>
+                                    <option value="Sudaderas">Sudaderas</option>
+                                    <option value="Pantalones de vestir">Pantalones de vestir</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-card">
+                            <div class="btn-row">
+                                <button type="submit" class="btn-primary">
+                                    <i class="ti ti-check"></i> Guardar producto
+                                </button>
+                                <a th:href="@{/admin/productos}" class="btn-ghost">
+                                    <i class="ti ti-x"></i> Cancelar
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- columna derecha -->
+                    <div class="form-column">
+
+                        <div class="form-card">
+                            <p class="form-card-title">Imagen del producto</p>
+                            <label class="img-upload-area" for="imagenFile">
+                                <i class="ti ti-cloud-upload"></i>
+                                <p>Arrastra una imagen aquí</p>
+                                <span>o haz clic para seleccionar</span>
+                                <p class="img-upload-hint">JPG o PNG · Máx. 5 MB</p>
+                            </label>
+                            <input type="file" id="imagenFile" name="imagen" accept=".jpg,.png" style="display:none;">
+                            <div class="img-preview-box">
+                                <i class="ti ti-photo"></i>
+                            </div>
+                            <p class="form-hint">La imagen se guardará en <code>/imgs</code></p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </main>
+    </div>
+</div>
+
+</body>
+</html>

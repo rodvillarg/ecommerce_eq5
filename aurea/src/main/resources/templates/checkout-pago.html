@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurea — Checkout · Método de Pago</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/variables.css">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/layout.css">
+    <link rel="stylesheet" href="/styles/checkout.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+    <input type="checkbox" id="menu-toggle">
+    <div class="header-inner">
+        <a href="/" class="logo">
+            <span class="logo__au">Au</span><span class="logo__rea">rea</span>
+        </a>
+        <nav class="main-nav">
+            <a href="/">Inicio</a>
+            <a href="/productos">Hombre</a>
+            <a href="/productos">Novedades</a>
+            <a href="/productos">Sale</a>
+        </nav>
+        <div class="header-right">
+            <a href="#" class="hbtn" aria-label="Buscar">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/>
+                </svg>
+            </a>
+            <a href="/login" class="hbtn" aria-label="Mi cuenta">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+            </a>
+            <a href="/bolsa-compra" class="hbtn" aria-label="Bolsa de compra">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+                <span class="cart-dot">3</span>
+            </a>
+        </div>
+        <label for="menu-toggle" class="menu-button" aria-label="Menú">
+            <span></span><span></span><span></span>
+        </label>
+    </div>
+    <nav class="mobile-nav">
+        <a href="/">Inicio</a>
+        <a href="/productos">Hombre</a>
+        <a href="/productos">Novedades</a>
+        <a href="/productos">Sale</a>
+    </nav>
+</header>
+
+<!-- Stepper -->
+<div class="checkout-stepper">
+    <div class="checkout-step checkout-step--listo">
+        <div class="checkout-step__num">✓</div>
+        <span class="checkout-step__label">Envío</span>
+    </div>
+    <div class="checkout-step__linea checkout-step__linea--listo"></div>
+    <div class="checkout-step checkout-step--activo">
+        <div class="checkout-step__num">2</div>
+        <span class="checkout-step__label">Pago</span>
+    </div>
+    <div class="checkout-step__linea"></div>
+    <div class="checkout-step">
+        <div class="checkout-step__num">3</div>
+        <span class="checkout-step__label">Confirmación</span>
+    </div>
+</div>
+
+<!-- Contenido principal -->
+<main class="checkout-page">
+
+    <!-- columna izquierda: formulario de pago -->
+    <section class="checkout-form">
+
+        <h1 class="checkout-form__titulo">Método de pago</h1>
+
+        <!-- resumen de envío del paso anterior -->
+        <div class="checkout-envio-resumen">
+            <div class="checkout-envio-resumen__datos">
+                <span class="checkout-envio-resumen__nombre">Jesús Rodrigo Villegas Argüelles</span>
+                <span class="checkout-envio-resumen__dir">Blvd. García Morales 123, Centro · Ciudad Obregón, Sonora · 85000</span>
+                <span class="checkout-envio-resumen__dir">Envío estándar · Gratis · 5–7 días hábiles</span>
+            </div>
+            <a href="/checkout-envio" class="checkout-envio-resumen__editar">Editar</a>
+        </div>
+
+        <!-- selección de método -->
+        <fieldset class="checkout-fieldset">
+            <legend class="checkout-fieldset__legend">Selecciona tu método de pago</legend>
+
+            <div class="checkout-metodo-tabs">
+                <button
+                        type="button"
+                        class="checkout-metodo-tab checkout-metodo-tab--activo"
+                        aria-label="Tarjeta de crédito o débito"
+                >
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                        <rect x="1" y="4" width="22" height="16" rx="2"/>
+                        <line x1="1" y1="10" x2="23" y2="10"/>
+                    </svg>
+                    Tarjeta
+                </button>
+                <button
+                        type="button"
+                        class="checkout-metodo-tab"
+                        aria-label="Pago en OXXO"
+                >
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                    OXXO
+                </button>
+                <button
+                        type="button"
+                        class="checkout-metodo-tab"
+                        aria-label="Transferencia SPEI"
+                >
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                        <polyline points="17 1 21 5 17 9"/>
+                        <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+                        <polyline points="7 23 3 19 7 15"/>
+                        <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+                    </svg>
+                    SPEI
+                </button>
+            </div>
+
+            <!-- panel: tarjeta (visible por defecto) -->
+            <div class="checkout-panel checkout-panel--tarjeta" id="panel-tarjeta">
+                <div class="checkout-grid">
+                    <div class="checkout-campo checkout-campo--completo">
+                        <label for="num-tarjeta" class="checkout-campo__label">Número de tarjeta</label>
+                        <div class="checkout-campo__wrapper">
+                            <input
+                                    id="num-tarjeta"
+                                    class="checkout-campo__input checkout-campo__input--icono"
+                                    type="text"
+                                    name="numeroTarjeta"
+                                    placeholder="0000 0000 0000 0000"
+                                    maxlength="19"
+                                    autocomplete="cc-number"
+                            >
+                            <div class="checkout-campo__badges">
+                                <span class="checkout-card-badge">VISA</span>
+                                <span class="checkout-card-badge">MC</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-campo checkout-campo--completo">
+                        <label for="nombre-tarjeta" class="checkout-campo__label">Nombre en la tarjeta</label>
+                        <input
+                                id="nombre-tarjeta"
+                                class="checkout-campo__input"
+                                type="text"
+                                name="nombreTarjeta"
+                                placeholder="Como aparece en la tarjeta"
+                                autocomplete="cc-name"
+                        >
+                    </div>
+                    <div class="checkout-campo">
+                        <label for="expiracion" class="checkout-campo__label">Fecha de expiración</label>
+                        <input
+                                id="expiracion"
+                                class="checkout-campo__input"
+                                type="text"
+                                name="expiracion"
+                                placeholder="MM / AA"
+                                maxlength="7"
+                                autocomplete="cc-exp"
+                        >
+                    </div>
+                    <div class="checkout-campo">
+                        <label for="cvv" class="checkout-campo__label">CVV</label>
+                        <input
+                                id="cvv"
+                                class="checkout-campo__input"
+                                type="text"
+                                name="cvv"
+                                placeholder="•••"
+                                maxlength="4"
+                                autocomplete="cc-csc"
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <!-- panel: oxxo -->
+            <div class="checkout-panel checkout-panel--oxxo checkout-panel--oculto" id="panel-oxxo">
+                <div class="checkout-panel__info">
+                    <p>Al confirmar tu pedido recibirás un <strong>código de pago</strong> en tu correo electrónico.</p>
+                    <p>Preséntalo en cualquier tienda OXXO para realizar el pago. Tu pedido se procesará en cuanto se confirme.</p>
+                    <p class="checkout-panel__nota">El código tiene una vigencia de <strong>48 horas</strong>.</p>
+                </div>
+            </div>
+
+            <!-- panel: spei -->
+            <div class="checkout-panel checkout-panel--spei checkout-panel--oculto" id="panel-spei">
+                <div class="checkout-panel__info">
+                    <p>Al confirmar tu pedido recibirás los <strong>datos bancarios</strong> para realizar la transferencia.</p>
+                    <p>Una vez que realices el depósito, tu pedido se procesará en un plazo de <strong>1–2 horas hábiles</strong>.</p>
+                    <p class="checkout-panel__nota">Disponible para todos los bancos mexicanos.</p>
+                </div>
+            </div>
+
+        </fieldset>
+
+        <!-- botones de navegación -->
+        <div class="checkout-acciones">
+            <a href="/checkout-envio" class="checkout-acciones__volver">← Volver a envío</a>
+            <a href="/checkout-confirmacion"><button type="submit" class="checkout-acciones__siguiente">Confirmar pedido</button></a>
+        </div>
+
+    </section>
+
+    <!-- columna derecha: resumen de orden -->
+    <aside class="checkout-resumen">
+
+        <h2 class="checkout-resumen__titulo">Resumen de orden</h2>
+
+        <div class="checkout-resumen__articulo">
+            <div class="checkout-resumen__img">
+                <img src="/imgs/polo-cafe.png" alt="Polo Café">
+                <span class="checkout-resumen__badge">1</span>
+            </div>
+            <div class="checkout-resumen__info">
+                <p class="checkout-resumen__nombre">Polo Café</p>
+                <p class="checkout-resumen__meta">Talla M · Café</p>
+            </div>
+            <span class="checkout-resumen__precio">$649</span>
+        </div>
+
+        <div class="checkout-resumen__articulo">
+            <div class="checkout-resumen__img">
+                <img src="/imgs/jacket-cafe.png" alt="Jacket Café">
+                <span class="checkout-resumen__badge">1</span>
+            </div>
+            <div class="checkout-resumen__info">
+                <p class="checkout-resumen__nombre">Jacket Café</p>
+                <p class="checkout-resumen__meta">Talla L · Café oscuro</p>
+            </div>
+            <span class="checkout-resumen__precio">$1,299</span>
+        </div>
+
+        <div class="checkout-resumen__articulo">
+            <div class="checkout-resumen__img">
+                <img src="/imgs/bermuda-blanca.png" alt="Bermuda Blanca">
+                <span class="checkout-resumen__badge">2</span>
+            </div>
+            <div class="checkout-resumen__info">
+                <p class="checkout-resumen__nombre">Bermuda Blanca</p>
+                <p class="checkout-resumen__meta">Talla S · Blanco</p>
+            </div>
+            <span class="checkout-resumen__precio">$958</span>
+        </div>
+
+        <hr class="checkout-resumen__divider">
+
+        <div class="checkout-resumen__fila checkout-resumen__fila--muted">
+            <span>Subtotal</span>
+            <span>$3,006</span>
+        </div>
+        <div class="checkout-resumen__fila checkout-resumen__fila--muted">
+            <span>Descuento (Sale)</span>
+            <span class="checkout-resumen__descuento">−$120</span>
+        </div>
+        <div class="checkout-resumen__fila checkout-resumen__fila--muted">
+            <span>Envío</span>
+            <span class="checkout-resumen__tag-gratis">Gratis</span>
+        </div>
+        <div class="checkout-resumen__fila checkout-resumen__fila--total">
+            <span>Total</span>
+            <span>$2,886 MXN</span>
+        </div>
+
+    </aside>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-top">
+        <div>
+            <p class="fcol-title">Aurea</p>
+            <div class="fcol-links">
+                <a href="/productos">Nueva Colección</a>
+                <a href="/productos">Camisas</a>
+                <a href="/productos">Polos</a>
+                <a href="/productos">Pantalones</a>
+                <a href="/productos">Sale</a>
+            </div>
+        </div>
+        <div>
+            <p class="fcol-title">Ayuda</p>
+            <div class="fcol-links">
+                <a href="#">Guía de Tallas</a>
+                <a href="#">Envíos y Devoluciones</a>
+                <a href="#">Preguntas Frecuentes</a>
+                <a href="#">Contacto</a>
+            </div>
+        </div>
+        <div>
+            <p class="fcol-title">Empresa</p>
+            <div class="fcol-links">
+                <a href="#">Sobre Aurea</a>
+                <a href="#">Sustentabilidad</a>
+                <a href="#">Trabaja con Nosotros</a>
+                <a href="#">Prensa</a>
+            </div>
+        </div>
+        <div>
+            <p class="fcol-title">Síguenos</p>
+            <div class="fcol-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Pinterest</a>
+                <a href="#">TikTok</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Aurea. Todos los derechos reservados.</p>
+        <div class="fpays">
+            <span>VISA</span><span>MC</span><span>AMEX</span><span>OXXO</span><span>PayPal</span>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+</html>

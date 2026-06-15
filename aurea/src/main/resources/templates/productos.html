@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurea — Catálogo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/variables.css">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/layout.css">
+    <link rel="stylesheet" href="/styles/products.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+    <input type="checkbox" id="menu-toggle">
+    <div class="header-inner">
+        <a href="/" class="logo">
+            <span class="logo__au">Au</span><span class="logo__rea">rea</span>
+        </a>
+        <nav class="main-nav">
+            <a href="/">Inicio</a>
+            <a href="/productos" class="active">Hombre</a>
+            <a href="/productos">Novedades</a>
+            <a href="/productos">Sale</a>
+        </nav>
+        <div class="header-right">
+            <a href="#" class="hbtn" aria-label="Buscar">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/>
+                </svg>
+            </a>
+            <a href="/login" class="hbtn" aria-label="Mi cuenta">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+            </a>
+            <a href="/bolsa-compra" class="hbtn" aria-label="Bolsa de compra">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+                <span class="cart-dot">0</span>
+            </a>
+        </div>
+        <label for="menu-toggle" class="menu-button" aria-label="Menú">
+            <span></span><span></span><span></span>
+        </label>
+    </div>
+    <nav class="mobile-nav">
+        <a href="/">Inicio</a>
+        <a href="/productos">Hombre</a>
+        <a href="/productos">Novedades</a>
+        <a href="/productos">Sale</a>
+    </nav>
+</header>
+
+<!-- Barra superior -->
+<div class="catalogo-header">
+    <div class="catalogo-header__inner">
+        <div>
+            <h1 class="catalogo-header__titulo">Hombre</h1>
+            <p class="catalogo-header__count">36 productos</p>
+        </div>
+        <div class="buscador">
+            <input type="search" placeholder="Buscar productos...">
+            <button aria-label="Buscar">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/>
+                </svg>
+            </button>
+        </div>
+        <div class="ordenar">
+            <span>Ordenar por</span>
+            <select>
+                <option>Relevancia</option>
+                <option>Precio: menor a mayor</option>
+                <option>Precio: mayor a menor</option>
+                <option>Más nuevos</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<!-- Catálogo -->
+<div class="catalogo-body">
+
+    <!-- Sidebar -->
+    <aside class="filtros-sidebar">
+
+        <div class="filtro-grupo">
+            <p class="filtro-grupo__titulo">Categoría</p>
+            <label class="filtro-opcion">
+                <input type="checkbox" checked>
+                <span class="filtro-check"></span>
+                Todo <span class="filtro-opcion__count">36</span>
+            </label>
+            <label class="filtro-opcion">
+                <input type="checkbox">
+                <span class="filtro-check"></span>
+                Camisas <span class="filtro-opcion__count">6</span>
+            </label>
+            <label class="filtro-opcion">
+                <input type="checkbox">
+                <span class="filtro-check"></span>
+                Camisetas <span class="filtro-opcion__count">7</span>
+            </label>
+            <label class="filtro-opcion">
+                <input type="checkbox">
+                <span class="filtro-check"></span>
+                Polos <span class="filtro-opcion__count">3</span>
+            </label>
+            <label class="filtro-opcion">
+                <input type="checkbox">
+                <span class="filtro-check"></span>
+                Pantalones <span class="filtro-opcion__count">4</span>
+            </label>
+            <label class="filtro-opcion">
+                <input type="checkbox">
+                <span class="filtro-check"></span>
+                Jeans <span class="filtro-opcion__count">4</span>
+            </label>
+            <label class="filtro-opcion">
+                <input type="checkbox">
+                <span class="filtro-check"></span>
+                Bermudas <span class="filtro-opcion__count">4</span>
+            </label>
+            <label class="filtro-opcion">
+                <input type="checkbox">
+                <span class="filtro-check"></span>
+                Jackets <span class="filtro-opcion__count">3</span>
+            </label>
+            <label class="filtro-opcion">
+                <input type="checkbox">
+                <span class="filtro-check"></span>
+                Sudaderas <span class="filtro-opcion__count">2</span>
+            </label>
+        </div>
+
+        <div class="filtro-grupo">
+            <p class="filtro-grupo__titulo">Talla</p>
+            <div class="tallas-filtro">
+                <button class="talla-filtro">XS</button>
+                <button class="talla-filtro activa">S</button>
+                <button class="talla-filtro activa">M</button>
+                <button class="talla-filtro">L</button>
+                <button class="talla-filtro">XL</button>
+                <button class="talla-filtro">XXL</button>
+            </div>
+        </div>
+
+        <div class="filtro-grupo">
+            <p class="filtro-grupo__titulo">Color</p>
+            <div class="colores-filtro">
+                <button class="color-filtro activo" style="background:#111;" title="Negro"></button>
+                <button class="color-filtro" style="background:#fff; border: 1px solid #e5e5e5;" title="Blanco"></button>
+                <button class="color-filtro" style="background:#6b7a8c;" title="Azul"></button>
+                <button class="color-filtro" style="background:#6b4f3a;" title="Café"></button>
+                <button class="color-filtro" style="background:#8c8c8c;" title="Gris"></button>
+                <button class="color-filtro" style="background:#4a6741;" title="Verde"></button>
+                <button class="color-filtro" style="background:#c47e8c;" title="Rosa"></button>
+            </div>
+        </div>
+
+        <div class="filtro-grupo">
+            <p class="filtro-grupo__titulo">Precio</p>
+            <div class="precio-rango">
+                <input class="precio-input" type="number" placeholder="$Min" min="0">
+                <span class="precio-sep">—</span>
+                <input class="precio-input" type="number" placeholder="$Max" min="0">
+            </div>
+        </div>
+
+        <button class="btn-limpiar">Limpiar filtros</button>
+
+    </aside>
+
+    <!-- Productos -->
+    <main>
+        <div class="productos-grid">
+
+            <a href="/producto/1" class="pcard">
+                <div class="pcard__img">
+                    <img src="/imgs/blazer-negro.jpg" alt="Blazer Negro">
+                    <span class="pcard__badge pcard__badge--nuevo">Nuevo</span>
+                </div>
+                <div class="pcard__colors">
+                    <span class="pcard__color" style="background:#111;"></span>
+                    <span class="pcard__color" style="background:#6b4f3a;"></span>
+                    <span class="pcard__color" style="background:#c47e8c;"></span>
+                </div>
+                <p class="pcard__cat">Blazers</p>
+                <p class="pcard__name">Blazer Clásico</p>
+                <p class="pcard__price">$2,490</p>
+            </a>
+
+            <a href="/producto/2" class="pcard">
+                <div class="pcard__img">
+                    <img src="/imgs/camisa-azulmarino.jpg" alt="Camisa Azul Marino">
+                    <span class="pcard__badge pcard__badge--nuevo">Nuevo</span>
+                </div>
+                <div class="pcard__colors">
+                    <span class="pcard__color" style="background:#1a2e4a;"></span>
+                    <span class="pcard__color" style="background:#fff; border-color:#ccc;"></span>
+                    <span class="pcard__color" style="background:#6b4f3a;"></span>
+                </div>
+                <p class="pcard__cat">Camisas</p>
+                <p class="pcard__name">Camisa Azul Marino</p>
+                <p class="pcard__price">$890</p>
+            </a>
+
+            <a href="/producto/3" class="pcard">
+                <div class="pcard__img">
+                    <img src="/imgs/jean-straight-negro.png" alt="Jean Straight Negro">
+                </div>
+                <div class="pcard__colors">
+                    <span class="pcard__color" style="background:#111;"></span>
+                    <span class="pcard__color" style="background:#c8c0b0;"></span>
+                </div>
+                <p class="pcard__cat">Jeans</p>
+                <p class="pcard__name">Jean Straight</p>
+                <p class="pcard__price">$1,390</p>
+            </a>
+
+            <a href="/producto/4" class="pcard">
+                <div class="pcard__img">
+                    <img src="/imgs/polo-negra.jpg" alt="Polo Negra">
+                    <span class="pcard__badge pcard__badge--sale">20% off</span>
+                </div>
+                <div class="pcard__colors">
+                    <span class="pcard__color" style="background:#111;"></span>
+                    <span class="pcard__color" style="background:#fff; border-color:#ccc;"></span>
+                    <span class="pcard__color" style="background:#6b4f3a;"></span>
+                </div>
+                <p class="pcard__cat">Polos</p>
+                <p class="pcard__name">Polo Clásico</p>
+                <p class="pcard__price">$690 <span class="pcard__price-orig">$860</span></p>
+            </a>
+
+            <a href="/producto/5" class="pcard">
+                <div class="pcard__img">
+                    <img src="/imgs/pantalon-vestir-slimfit.jpg" alt="Pantalón Slim Fit">
+                </div>
+                <div class="pcard__colors">
+                    <span class="pcard__color" style="background:#3a3a3a;"></span>
+                    <span class="pcard__color" style="background:#8c8070;"></span>
+                </div>
+                <p class="pcard__cat">Pantalones</p>
+                <p class="pcard__name">Pantalón Slim Fit</p>
+                <p class="pcard__price">$1,290</p>
+            </a>
+
+            <a href="/producto/6" class="pcard">
+                <div class="pcard__img">
+                    <img src="/imgs/sudadera-cuellozip-cafe.jpg" alt="Sudadera Café">
+                    <span class="pcard__badge pcard__badge--nuevo">Nuevo</span>
+                </div>
+                <div class="pcard__colors">
+                    <span class="pcard__color" style="background:#6b4f3a;"></span>
+                    <span class="pcard__color" style="background:#111;"></span>
+                </div>
+                <p class="pcard__cat">Sudaderas</p>
+                <p class="pcard__name">Sudadera Cuello Zip</p>
+                <p class="pcard__price">$1,290</p>
+            </a>
+
+            <a href="/producto/7" class="pcard">
+                <div class="pcard__img">
+                    <img src="/imgs/camiseta-negra.png" alt="Camiseta Negra">
+                </div>
+                <div class="pcard__colors">
+                    <span class="pcard__color" style="background:#111;"></span>
+                    <span class="pcard__color" style="background:#fff; border-color:#ccc;"></span>
+                </div>
+                <p class="pcard__cat">Camisetas</p>
+                <p class="pcard__name">Camiseta Básica</p>
+                <p class="pcard__price">$490</p>
+            </a>
+
+            <a href="/producto/8" class="pcard">
+                <div class="pcard__img">
+                    <img src="/imgs/jean-baggy-azul.png" alt="Jean Baggy Azul">
+                    <span class="pcard__badge pcard__badge--sale">15% off</span>
+                </div>
+                <div class="pcard__colors">
+                    <span class="pcard__color" style="background:#6b7a8c;"></span>
+                    <span class="pcard__color" style="background:#8c8c8c;"></span>
+                </div>
+                <p class="pcard__cat">Jeans</p>
+                <p class="pcard__name">Jean Baggy</p>
+                <p class="pcard__price">$1,180 <span class="pcard__price-orig">$1,390</span></p>
+            </a>
+
+            <a href="/producto/9" class="pcard">
+                <div class="pcard__img">
+                    <img src="/imgs/jacket-negra.png" alt="Jacket Negra">
+                    <span class="pcard__badge pcard__badge--nuevo">Nuevo</span>
+                </div>
+                <div class="pcard__colors">
+                    <span class="pcard__color" style="background:#111;"></span>
+                    <span class="pcard__color" style="background:#6b4f3a;"></span>
+                </div>
+                <p class="pcard__cat">Jackets</p>
+                <p class="pcard__name">Jacket Clásica</p>
+                <p class="pcard__price">$1,890</p>
+            </a>
+
+        </div>
+    </main>
+
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-top">
+        <div>
+            <p class="fcol-title">Aurea</p>
+            <div class="fcol-links">
+                <a href="/productos">Nueva Colección</a>
+                <a href="/productos">Camisas</a>
+                <a href="/productos">Polos</a>
+                <a href="/productos">Pantalones</a>
+                <a href="/productos">Sale</a>
+            </div>
+        </div>
+        <div>
+            <p class="fcol-title">Ayuda</p>
+            <div class="fcol-links">
+                <a href="#">Guía de Tallas</a>
+                <a href="#">Envíos y Devoluciones</a>
+                <a href="#">Preguntas Frecuentes</a>
+                <a href="#">Contacto</a>
+            </div>
+        </div>
+        <div>
+            <p class="fcol-title">Empresa</p>
+            <div class="fcol-links">
+                <a href="#">Sobre Aurea</a>
+                <a href="#">Sustentabilidad</a>
+                <a href="#">Trabaja con Nosotros</a>
+                <a href="#">Prensa</a>
+            </div>
+        </div>
+        <div>
+            <p class="fcol-title">Síguenos</p>
+            <div class="fcol-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Pinterest</a>
+                <a href="#">TikTok</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Aurea. Todos los derechos reservados.</p>
+        <div class="fpays">
+            <span>VISA</span><span>MC</span><span>AMEX</span><span>OXXO</span><span>PayPal</span>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+</html>

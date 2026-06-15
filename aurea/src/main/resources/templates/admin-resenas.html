@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reseñas — Aurea Admin</title>
+    <link rel="stylesheet" th:href="@{/styles/admin-styles.css}">
+    <link rel="stylesheet" th:href="@{/styles/variables.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+
+<div class="admin-wrapper">
+
+    /* Topbar: */
+    <header class="topbar">
+        <a th:href="@{/}" class="topbar-logo">
+            <span class="au">AU</span><span class="rea">REA</span>
+        </a>
+        <span class="topbar-center">Panel de Administración</span>
+        <div class="topbar-icons">
+            <a th:href="@{/}" class="topbar-icon-btn" title="Ir al inicio">
+                <i class="ti ti-home"></i>
+            </a>
+            <a th:href="@{/admin/logout}" class="topbar-icon-btn dark" title="Cerrar sesión">
+                <i class="ti ti-logout"></i>
+            </a>
+        </div>
+    </header>
+
+    <div class="admin-body">
+
+        /* Sidebar */
+        <aside class="sidebar">
+            <div class="sidebar-top">
+
+                <div class="sidebar-admin">
+                    <p class="label">Administrador</p>
+                    <p class="name" th:text="${adminNombre}">Carlos López</p>
+                    <p class="role" th:text="${adminRol}">Super Admin</p>
+                </div>
+
+                <p class="sidebar-section-label">General</p>
+                <a th:href="@{/admin/dashboard}" class="sidebar-item">
+                    <div class="sidebar-item-left">
+                        <i class="ti ti-layout-dashboard"></i>
+                        Dashboard
+                    </div>
+                </a>
+
+                <div class="sidebar-divider"></div>
+
+                <p class="sidebar-section-label">Catálogo</p>
+                <a th:href="@{/admin/productos}" class="sidebar-item">
+                    <div class="sidebar-item-left">
+                        <i class="ti ti-shirt"></i>
+                        Productos
+                    </div>
+                    <span class="badge" th:text="${totalProductos}">89</span>
+                </a>
+
+                <div class="sidebar-divider"></div>
+
+                <p class="sidebar-section-label">Ventas</p>
+                <a th:href="@{/admin/pedidos}" class="sidebar-item">
+                    <div class="sidebar-item-left">
+                        <i class="ti ti-package"></i>
+                        Pedidos
+                    </div>
+                    <span class="badge" th:text="${pedidosPendientes}">4</span>
+                </a>
+
+                <div class="sidebar-divider"></div>
+
+                <p class="sidebar-section-label">Comunidad</p>
+                <a th:href="@{/admin/resenas}" class="sidebar-item active">
+                    <div class="sidebar-item-left">
+                        <i class="ti ti-message-circle"></i>
+                        Reseñas
+                    </div>
+                    <span class="badge" th:text="${resenasPendientes}">7</span>
+                </a>
+
+                <div class="sidebar-divider"></div>
+
+                <p class="sidebar-section-label">Clientes</p>
+                <a th:href="@{/admin/clientes}" class="sidebar-item">
+                    <div class="sidebar-item-left">
+                        <i class="ti ti-users"></i>
+                        Clientes
+                    </div>
+                    <span class="badge" th:text="${totalClientes}">248</span>
+                </a>
+
+            </div>
+
+            <a th:href="@{/admin/logout}" class="sidebar-logout">
+                <i class="ti ti-logout"></i>
+                Cerrar sesión
+            </a>
+        </aside>
+
+        /* Contenido Principal */
+        <main class="main-content">
+
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Reseñas</h1>
+                    <p class="page-subtitle" th:text="${resenasPendientes + ' reseñas pendientes de moderación'}">
+                        7 reseñas pendientes de moderación
+                    </p>
+                </div>
+            </div>
+
+            /* Filtros: */
+            <div class="filtros-bar">
+                <a th:href="@{/admin/resenas(filtro='pendientes')}" class="pill pend">
+                    Pendientes (<span th:text="${resenasPendientes}">7</span>)
+                </a>
+                <a th:href="@{/admin/resenas}" class="pill active">
+                    Todas (<span th:text="${totalResenas}">24</span>)
+                </a>
+                <a th:href="@{/admin/resenas(filtro='aprobadas')}" class="pill">
+                    Aprobadas (<span th:text="${resenasAprobadas}">17</span>)
+                </a>
+            </div>
+
+            /* Grid de Resenas */
+            <div class="resenas-grid">
+
+                <div th:each="resena : ${resenas}" class="resena-card">
+
+                    <div class="resena-card-top">
+                        <div class="resena-meta">
+                            <span class="resena-autor" th:text="${resena.clienteNombre}">Diego Ramírez</span>
+                            <span class="resena-producto" th:text="${resena.productoNombre}">Blazer Negro Casual</span>
+                        </div>
+                        <span class="resena-fecha" th:text="${resena.fecha}">13 jun 2026</span>
+                    </div>
+
+                    <div class="resena-estrellas">
+                        <span th:each="i : ${#numbers.sequence(1, resena.calificacion)}">★</span>
+                        <span th:each="i : ${#numbers.sequence(resena.calificacion + 1, 5)}" style="color:#e0e0e0;">★</span>
+                    </div>
+
+                    <p class="resena-texto" th:text="${resena.texto}">
+                        Excelente calidad, el corte es perfecto.
+                    </p>
+
+                    <div class="resena-estado-row">
+                        <span class="estado-badge"
+                              th:text="${resena.estado}"
+                              th:classappend="${resena.estado == 'Pendiente'} ? 'estado-pendiente' : 'estado-aprobado'">
+                            Pendiente
+                        </span>
+                    </div>
+
+                    <div class="resena-actions">
+                        <a th:if="${resena.estado == 'Pendiente'}"
+                           th:href="@{/admin/resenas/aprobar(id=${resena.id})}"
+                           class="act-aprobar">
+                            <i class="ti ti-check"></i> Aprobar
+                        </a>
+                        <a th:href="@{/admin/resenas/rechazar(id=${resena.id})}"
+                           class="act-rechazar">
+                            <i class="ti ti-x"></i> Rechazar
+                        </a>
+                        <a th:href="@{/admin/resenas/eliminar(id=${resena.id})}"
+                           class="act-eliminar">
+                            <i class="ti ti-trash"></i> Eliminar
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurea — Bolsa de Compra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/variables.css">
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="stylesheet" href="/styles/bolsa-compra.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <input type="checkbox" id="menu-toggle">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <span class="logo__au">Au</span><span class="logo__rea">rea</span>
+    </a>
+    <nav class="main-nav">
+      <a href="/">Inicio</a>
+      <a href="/productos">Hombre</a>
+      <a href="/productos">Novedades</a>
+      <a href="/productos">Sale</a>
+    </nav>
+    <div class="header-right">
+      <a href="#" class="hbtn" aria-label="Buscar">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+      </a>
+      <a href="/login" class="hbtn" aria-label="Mi cuenta">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+      </a>
+      <a href="/bolsa-compra" class="hbtn active" aria-label="Bolsa de compra">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span class="cart-dot">3</span>
+      </a>
+    </div>
+    <label for="menu-toggle" class="menu-button" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </label>
+  </div>
+  <nav class="mobile-nav">
+    <a href="/">Inicio</a>
+    <a href="/productos">Hombre</a>
+    <a href="/productos">Novedades</a>
+    <a href="/productos">Sale</a>
+  </nav>
+</header>
+
+<!-- Contenido principal -->
+<main class="bolsa-page">
+
+  <!-- columna izquierda: lista de artículos -->
+  <section class="bolsa-items">
+
+    <div class="bolsa-encabezado">
+      <h1 class="bolsa-titulo">Bolsa de compra</h1>
+      <span class="bolsa-conteo">3 artículos</span>
+    </div>
+
+    <p class="bolsa-nota-envio">
+      <strong>Envío gratis</strong> en pedidos mayores a $999 MXN
+    </p>
+
+    <!-- artículo 1 -->
+    <article class="bolsa-articulo">
+      <div class="bolsa-articulo__imagen">
+        <img src="/imgs/polo-cafe.png" alt="Polo Café">
+      </div>
+      <div class="bolsa-articulo__info">
+        <div class="bolsa-articulo__encabezado">
+          <div class="bolsa-articulo__datos">
+            <p class="bolsa-articulo__nombre">Polo Café</p>
+            <p class="bolsa-articulo__meta">Talla M &nbsp;·&nbsp; Café</p>
+            <p class="bolsa-articulo__ref">Ref. AUR-001</p>
+          </div>
+          <span class="bolsa-articulo__precio">$649</span>
+        </div>
+        <div class="bolsa-articulo__acciones">
+          <div class="bolsa-cantidad">
+            <button class="bolsa-cantidad__btn" aria-label="Disminuir cantidad">−</button>
+            <span class="bolsa-cantidad__valor">1</span>
+            <button class="bolsa-cantidad__btn" aria-label="Aumentar cantidad">+</button>
+          </div>
+          <button class="bolsa-accion">Guardar</button>
+          <button class="bolsa-accion bolsa-accion--eliminar">Eliminar</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- artículo 2 -->
+    <article class="bolsa-articulo">
+      <div class="bolsa-articulo__imagen">
+        <img src="/imgs/jacket-cafe.png" alt="Jacket Café">
+      </div>
+      <div class="bolsa-articulo__info">
+        <div class="bolsa-articulo__encabezado">
+          <div class="bolsa-articulo__datos">
+            <p class="bolsa-articulo__nombre">Jacket Café</p>
+            <p class="bolsa-articulo__meta">Talla L &nbsp;·&nbsp; Café oscuro</p>
+            <p class="bolsa-articulo__ref">Ref. AUR-007</p>
+          </div>
+          <span class="bolsa-articulo__precio">$1,299</span>
+        </div>
+        <div class="bolsa-articulo__acciones">
+          <div class="bolsa-cantidad">
+            <button class="bolsa-cantidad__btn" aria-label="Disminuir cantidad">−</button>
+            <span class="bolsa-cantidad__valor">1</span>
+            <button class="bolsa-cantidad__btn" aria-label="Aumentar cantidad">+</button>
+          </div>
+          <button class="bolsa-accion">Guardar</button>
+          <button class="bolsa-accion bolsa-accion--eliminar">Eliminar</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- artículo 3 (en sale) -->
+    <article class="bolsa-articulo">
+      <div class="bolsa-articulo__imagen">
+        <img src="/imgs/bermuda-blanca.png" alt="Bermuda Blanca">
+      </div>
+      <div class="bolsa-articulo__info">
+        <div class="bolsa-articulo__encabezado">
+          <div class="bolsa-articulo__datos">
+            <p class="bolsa-articulo__nombre">Bermuda Blanca</p>
+            <p class="bolsa-articulo__meta">Talla S &nbsp;·&nbsp; Blanco</p>
+            <p class="bolsa-articulo__sale">Sale — 20% OFF</p>
+          </div>
+          <div class="bolsa-articulo__precios">
+            <span class="bolsa-articulo__precio">$479</span>
+            <span class="bolsa-articulo__precio-original">$599</span>
+          </div>
+        </div>
+        <div class="bolsa-articulo__acciones">
+          <div class="bolsa-cantidad">
+            <button class="bolsa-cantidad__btn" aria-label="Disminuir cantidad">−</button>
+            <span class="bolsa-cantidad__valor">2</span>
+            <button class="bolsa-cantidad__btn" aria-label="Aumentar cantidad">+</button>
+          </div>
+          <button class="bolsa-accion">Guardar</button>
+          <button class="bolsa-accion bolsa-accion--eliminar">Eliminar</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- campo de código de descuento -->
+    <div class="bolsa-promo">
+      <input
+              class="bolsa-promo__input"
+              type="text"
+              placeholder="Código de descuento"
+              aria-label="Código de descuento"
+      >
+      <button class="bolsa-promo__btn">Aplicar</button>
+    </div>
+
+  </section>
+
+  <!-- columna derecha: resumen de orden -->
+  <aside class="bolsa-resumen">
+
+    <h2 class="bolsa-resumen__titulo">Resumen de orden</h2>
+
+    <div class="bolsa-resumen__fila bolsa-resumen__fila--muted">
+      <span>Subtotal (4 artículos)</span>
+      <span>$3,006</span>
+    </div>
+    <div class="bolsa-resumen__fila bolsa-resumen__fila--muted">
+      <span>Descuento (Sale)</span>
+      <span class="bolsa-resumen__descuento">−$120</span>
+    </div>
+    <div class="bolsa-resumen__fila bolsa-resumen__fila--muted">
+      <span>Envío estimado</span>
+      <span class="bolsa-resumen__tag-gratis">Gratis</span>
+    </div>
+    <div class="bolsa-resumen__fila bolsa-resumen__fila--total">
+      <span>Total</span>
+      <span>$2,886 MXN</span>
+    </div>
+
+    <a href="/checkout-envio"><button class="bolsa-resumen__checkout">Continuar con el pago</button></a>
+
+    <p class="bolsa-resumen__seguro">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+      Pago 100% seguro
+    </p>
+
+    <div class="bolsa-resumen__metodos">
+      <span class="bolsa-resumen__metodo">VISA</span>
+      <span class="bolsa-resumen__metodo">MC</span>
+      <span class="bolsa-resumen__metodo">AMEX</span>
+      <span class="bolsa-resumen__metodo">OXXO</span>
+      <span class="bolsa-resumen__metodo">SPEI</span>
+    </div>
+
+  </aside>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div>
+      <p class="fcol-title">Aurea</p>
+      <div class="fcol-links">
+        <a href="/productos">Nueva Colección</a>
+        <a href="/productos">Camisas</a>
+        <a href="/productos">Polos</a>
+        <a href="/productos">Pantalones</a>
+        <a href="/productos">Sale</a>
+      </div>
+    </div>
+    <div>
+      <p class="fcol-title">Ayuda</p>
+      <div class="fcol-links">
+        <a href="#">Guía de Tallas</a>
+        <a href="#">Envíos y Devoluciones</a>
+        <a href="#">Preguntas Frecuentes</a>
+        <a href="#">Contacto</a>
+      </div>
+    </div>
+    <div>
+      <p class="fcol-title">Empresa</p>
+      <div class="fcol-links">
+        <a href="#">Sobre Aurea</a>
+        <a href="#">Sustentabilidad</a>
+        <a href="#">Trabaja con Nosotros</a>
+        <a href="#">Prensa</a>
+      </div>
+    </div>
+    <div>
+      <p class="fcol-title">Síguenos</p>
+      <div class="fcol-links">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">Pinterest</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Aurea. Todos los derechos reservados.</p>
+    <div class="fpays">
+      <span>VISA</span><span>MC</span><span>AMEX</span><span>OXXO</span><span>PayPal</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
