@@ -1,0 +1,86 @@
+:root {
+    --color-negro:        #111111;
+    --color-negro-hover:  #333333;
+    --color-blanco:       #ffffff;
+    --color-beige-fondo: #f7f3ee;
+
+    /* grises */
+    --color-gris-claro:   #f5f5f5;
+    --color-gris-medio:   #e5e5e5;
+    --color-gris-texto:   #757575;
+    --color-gris-sutil:   #aaaaaa;
+    --color-gris-oscuro:  #555555;
+    --color-gris-placeholder: #bbbbbb;
+    --color-logo-gris:  #cccccc;
+
+    --color-acento:       #c8b89a;
+
+    --color-exito:        #2d7a2d;
+    --color-exito-claro: #6fcf6f;
+    --color-exito-fondo:  #f0faf0;
+    --color-exito-borde:  #c3e6c3;
+
+    /* error */
+    --color-error:        #b03030;
+    --color-error-fuerte: #e03030;
+    --color-error-claro:  #f06060;
+    --color-error-fondo:  #fdecea;
+    --color-error-borde:  #fdecea;
+
+    /* warning */
+    --color-warning:        #b06000;
+    --color-warning-fuerte: #e09000;
+    --color-warning-fondo:  #fff3e0;
+
+    /* sale */
+    --color-sale:       #e07b39;
+    --color-sale-hover: #c0601e;
+    --color-sale-fondo: #fef3ee;
+
+    --color-estrella:            #f5a623;
+    --color-talla-agotada:       #cccccc;
+    --color-talla-agotada-borde: #f0f0f0;
+    --color-admin-badge:         #e8e4de;
+    --color-login-fondo-oscuro:  #1a1a1a;
+    --color-login-fondo-medio:   #2d2d2d;
+
+
+    --fuente-principal: 'Jost', Helvetica, Arial, sans-serif;
+    --fuente-display:   'Cormorant Garamond', Georgia, serif;
+
+    --texto-xs:   0.70rem;
+    --texto-sm:   0.78rem;
+    --texto-base: 0.875rem;
+    --texto-md:   1rem;
+    --texto-lg:   1.125rem;
+    --texto-xl:   1.3rem;
+    --texto-2xl:  1.6rem;
+    --texto-3xl:  2rem;
+
+    --radio-sm:      4px;
+    --radio-md:      8px;
+    --radio-lg:      12px;
+    --radio-xl:      20px;
+    --radio-pill:    30px;
+    --radio-circulo: 50%;
+
+    --espacio-xs:  4px;
+    --espacio-sm:  8px;
+    --espacio-md:  16px;
+    --espacio-lg:  24px;
+    --espacio-xl:  32px;
+    --espacio-2xl: 48px;
+    --espacio-3xl: 64px;
+
+    --sombra-sm:   0 2px 8px rgba(0,0,0,0.06);
+    --sombra-md:   0 4px 20px rgba(0,0,0,0.10);
+    --sombra-lg:   0 8px 48px rgba(0,0,0,0.14);
+    --sombra-card: 0 8px 48px rgba(0,0,0,0.40);
+
+    --transicion:       0.2s ease;
+    --transicion-lenta: 0.5s ease;
+
+    --ancho-max:      1440px;
+    --ancho-contenido: 1200px;
+    --alto-header:    56px;
+}

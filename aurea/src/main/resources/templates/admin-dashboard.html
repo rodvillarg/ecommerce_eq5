@@ -4,13 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard — Aurea Admin</title>
-  <link rel="stylesheet" th:href="@{/styles/admin-styles.css}">
   <link rel="stylesheet" th:href="@{/styles/variables.css}">
+  <link rel="stylesheet" th:href="@{/styles/admin-styles.css}">
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 <body>
 
 <div class="admin-wrapper">
+  <input type="checkbox" id="admin-menu-toggle">
 
   <!-- Topbar -->
   <header class="topbar">
@@ -25,9 +27,67 @@
       <a th:href="@{/admin/logout}" class="topbar-icon-btn dark" title="Cerrar sesión">
         <i class="ti ti-logout"></i>
       </a>
+      <label for="admin-menu-toggle" class="admin-menu-btn" aria-label="Menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
     </div>
   </header>
-
+  <nav class="admin-mobile-nav">
+    <div class="sidebar-admin">
+      <p class="label">Administrador</p>
+      <p class="name" th:text="${adminNombre}">Carlos López</p>
+      <p class="role" th:text="${adminRol}">Super Admin</p>
+    </div>
+    <p class="sidebar-section-label">General</p>
+    <a th:href="@{/admin/dashboard}" class="sidebar-item active">
+      <div class="sidebar-item-left">
+        <i class="ti ti-layout-dashboard"></i>
+        Dashboard
+      </div>
+    </a>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-section-label">Catálogo</p>
+    <a th:href="@{/admin/productos}" class="sidebar-item">
+      <div class="sidebar-item-left">
+        <i class="ti ti-shirt"></i>
+        Productos
+      </div>
+      <span class="badge" th:text="${totalProductos}">89</span>
+    </a>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-section-label">Ventas</p>
+    <a th:href="@{/admin/pedidos}" class="sidebar-item">
+      <div class="sidebar-item-left">
+        <i class="ti ti-package"></i>
+        Pedidos
+      </div>
+      <span class="badge" th:text="${pedidosPendientes}">4</span>
+    </a>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-section-label">Comunidad</p>
+    <a th:href="@{/admin/resenas}" class="sidebar-item">
+      <div class="sidebar-item-left">
+        <i class="ti ti-message-circle"></i>
+        Reseñas
+      </div>
+      <span class="badge" th:text="${resenasPendientes}">7</span>
+    </a>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-section-label">Clientes</p>
+    <a th:href="@{/admin/clientes}" class="sidebar-item">
+      <div class="sidebar-item-left">
+        <i class="ti ti-users"></i>
+        Clientes
+      </div>
+      <span class="badge" th:text="${clientesActivos}">248</span>
+    </a>
+    <a th:href="@{/admin/logout}" class="sidebar-logout">
+      <i class="ti ti-logout"></i>
+      Cerrar sesión
+    </a>
+  </nav>
   <div class="admin-body">
 
     <!-- Sidebar -->

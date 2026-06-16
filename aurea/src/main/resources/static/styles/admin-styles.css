@@ -117,6 +117,52 @@ body {
     border-color: var(--color-aurea-black);
 }
 
+/* menú hamburguesa admin móvil */
+#admin-menu-toggle {
+    display: none;
+}
+
+.admin-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.admin-menu-btn span {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: var(--color-aurea-black);
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.admin-mobile-nav {
+    display: none;
+    flex-direction: column;
+    background: var(--color-aurea-white);
+    border-top: 0.5px solid var(--color-aurea-border);
+    position: absolute;
+    top: 48px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+.admin-mobile-nav .sidebar-admin {
+    padding: 12px 16px;
+    border-bottom: 0.5px solid var(--color-aurea-border);
+    margin-bottom: 4px;
+}
+
+.admin-mobile-nav .sidebar-logout {
+    margin-top: 4px;
+}
+
 /* sidebar */
 .sidebar {
     width: 200px;
@@ -342,17 +388,6 @@ body {
     font-size: 10px;
     color: var(--color-error-fuerte);
     font-weight: 500;
-}
-
-/* Responsive: */
-@media (max-width: 768px) {
-    .sidebar {
-        display: none;
-    }
-
-    .main-content {
-        padding: 16px;
-    }
 }
 
 /* dashboard */
@@ -1240,4 +1275,241 @@ select.form-control {
 .monto-val {
     font-weight: 600;
     color: var(--color-aurea-black);
+}
+
+/* Responsive: */
+@media (max-width: 768px) {
+
+    /* --- layout --- */
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        padding: 16px;
+    }
+
+    /* --- topbar --- */
+    .topbar-icon-btn.dark {
+        display: none;
+    }
+
+    .topbar-center {
+        font-size: 10px;
+        padding: 4px 10px;
+    }
+
+    /* --- menú hamburguesa --- */
+    #admin-menu-toggle {
+        display: none;
+    }
+
+    .admin-menu-btn {
+        display: flex;
+    }
+
+    #admin-menu-toggle:checked ~ .admin-mobile-nav {
+        display: flex;
+    }
+
+    #admin-menu-toggle:checked ~ .topbar .admin-menu-btn span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+    }
+
+    #admin-menu-toggle:checked ~ .topbar .admin-menu-btn span:nth-child(2) {
+        opacity: 0;
+    }
+
+    #admin-menu-toggle:checked ~ .topbar .admin-menu-btn span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+    }
+
+    /* --- dashboard --- */
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* --- tabla productos: ocultar columnas no esenciales --- */
+    .productos-table thead th:nth-child(2),
+    .productos-table tbody td:nth-child(2),
+    .productos-table thead th:nth-child(4),
+    .productos-table tbody td:nth-child(4) {
+        display: none;
+        width: 0;
+    }
+
+    /* --- tabla pedidos: ocultar columnas no esenciales --- */
+    .pedidos-admin-table thead th:nth-child(2),
+    .pedidos-admin-table tbody td:nth-child(2),
+    .pedidos-admin-table thead th:nth-child(3),
+    .pedidos-admin-table tbody td:nth-child(3),
+    .pedidos-admin-table thead th:nth-child(6),
+    .pedidos-admin-table tbody td:nth-child(6) {
+        display: none;
+        width: 0;
+    }
+
+    /* --- tabla clientes: ocultar columnas no esenciales --- */
+    .clientes-table thead th:nth-child(2),
+    .clientes-table tbody td:nth-child(2),
+    .clientes-table thead th:nth-child(3),
+    .clientes-table tbody td:nth-child(3) {
+        display: none;
+    }
+
+    /* --- formulario producto: apilar columnas --- */
+    .form-layout {
+        grid-template-columns: 1fr;
+    }
+
+    /* --- toolbar: apilar búsqueda y filtros --- */
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-wrap {
+        max-width: 100%;
+    }
+
+    .filters {
+        overflow-x: auto;
+        padding-bottom: 4px;
+        flex-wrap: nowrap;
+    }
+
+    /* --- filtros-bar: scroll horizontal --- */
+    .filtros-bar {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 4px;
+    }
+
+    /* --- page header: apilar en móvil --- */
+    .page-header {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .last-updated {
+        padding-top: 0;
+    }
+
+    /* --- resenas: forzar 1 columna --- */
+    .resenas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* --- ocultar avatares en tablas --- */
+    .prod-avatar {
+        display: none;
+    }
+
+    .cliente-avatar {
+        display: none;
+    }
+
+    /* --- estado como punto de color --- */
+    .estado-badge {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        padding: 0;
+        font-size: 0;
+        display: inline-block;
+        flex-shrink: 0;
+    }
+
+    .estado-activo {
+        background: var(--color-exito);
+    }
+
+    .estado-bajo {
+        background: var(--color-warning-fuerte);
+    }
+
+    .estado-agotado {
+        background: var(--color-error-fuerte);
+    }
+
+    .estado-enviado {
+        background: var(--color-exito);
+    }
+
+    .estado-proceso {
+        background: var(--color-warning-fuerte);
+    }
+
+    .estado-pendiente {
+        background: var(--color-error-fuerte);
+    }
+
+    .estado-entregado {
+        background: var(--color-gris-sutil);
+    }
+
+    .estado-inactivo {
+        background: var(--color-error-fuerte);
+    }
+
+    /* --- centrar punto en celda --- */
+    .productos-table tbody td:nth-child(5),
+    .pedidos-admin-table tbody td:nth-child(5),
+    .clientes-table tbody td:nth-child(5) {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    /* --- encabezado columna estado --- */
+    .productos-table thead th:nth-child(5),
+    .pedidos-admin-table thead th:nth-child(5),
+    .clientes-table thead th:nth-child(5) {
+        font-size: 0;
+    }
+
+    .productos-table thead th:nth-child(5)::after,
+    .pedidos-admin-table thead th:nth-child(5)::after,
+    .clientes-table thead th:nth-child(5)::after {
+        content: 'Est.';
+        font-size: 10px;
+    }
+
+    /* --- quitar table-layout fixed en móvil para recalcular anchos --- */
+    .productos-table,
+    .pedidos-admin-table,
+    .clientes-table {
+        table-layout: auto;
+    }
+
+    /* --- combobox filtros móvil --- */
+    .filters {
+        display: none;
+    }
+
+    .filtros-bar {
+        display: none;
+    }
+
+    .filter-select-mobile {
+        display: block;
+        width: 100%;
+        padding: 8px 12px;
+        border: 0.5px solid var(--color-aurea-border);
+        border-radius: 8px;
+        background: var(--color-aurea-white);
+        font-size: 13px;
+        color: var(--color-aurea-black);
+        font-family: var(--font-main);
+        margin-bottom: 12px;
+        cursor: pointer;
+
+    }
+}
+
+.filter-select-mobile {
+    display: none;
 }

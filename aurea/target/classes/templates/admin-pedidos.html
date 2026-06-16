@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedidos — Aurea Admin</title>
+  <link rel="stylesheet" th:href="@{/styles/variables.css}">
+  <link rel="stylesheet" th:href="@{/styles/admin-styles.css}">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+
+<div class="admin-wrapper">
+  <input type="checkbox" id="admin-menu-toggle">
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <a th:href="@{/}" class="topbar-logo">
+      <span class="au">AU</span><span class="rea">REA</span>
+    </a>
+    <span class="topbar-center">Panel de Administración</span>
+    <div class="topbar-icons">
+      <a th:href="@{/}" class="topbar-icon-btn" title="Ir al inicio">
+        <i class="ti ti-home"></i>
+      </a>
+      <a th:href="@{/admin/logout}" class="topbar-icon-btn dark" title="Cerrar sesión">
+        <i class="ti ti-logout"></i>
+      </a>
+      <label for="admin-menu-toggle" class="admin-menu-btn" aria-label="Menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+  </header>
+
+  <nav class="admin-mobile-nav">
+      <div class="sidebar-admin">
+        <p class="label">Administrador</p>
+        <p class="name" th:text="${adminNombre}">Carlos López</p>
+        <p class="role" th:text="${adminRol}">Super Admin</p>
+      </div>
+      <p class="sidebar-section-label">General</p>
+      <a th:href="@{/admin/dashboard}" class="sidebar-item">
+        <div class="sidebar-item-left">
+          <i class="ti ti-layout-dashboard"></i>
+          Dashboard
+        </div>
+      </a>
+      <div class="sidebar-divider"></div>
+      <p class="sidebar-section-label">Catálogo</p>
+      <a th:href="@{/admin/productos}" class="sidebar-item">
+        <div class="sidebar-item-left">
+          <i class="ti ti-shirt"></i>
+          Productos
+        </div>
+        <span class="badge" th:text="${totalProductos}">89</span>
+      </a>
+      <div class="sidebar-divider"></div>
+      <p class="sidebar-section-label">Ventas</p>
+      <a th:href="@{/admin/pedidos}" class="sidebar-item active">
+        <div class="sidebar-item-left">
+          <i class="ti ti-package"></i>
+          Pedidos
+        </div>
+        <span class="badge" th:text="${pedidosPendientes}">4</span>
+      </a>
+      <div class="sidebar-divider"></div>
+      <p class="sidebar-section-label">Comunidad</p>
+      <a th:href="@{/admin/resenas}" class="sidebar-item">
+        <div class="sidebar-item-left">
+          <i class="ti ti-message-circle"></i>
+          Reseñas
+        </div>
+        <span class="badge" th:text="${resenasPendientes}">7</span>
+      </a>
+      <div class="sidebar-divider"></div>
+      <p class="sidebar-section-label">Clientes</p>
+      <a th:href="@{/admin/clientes}" class="sidebar-item">
+        <div class="sidebar-item-left">
+          <i class="ti ti-users"></i>
+          Clientes
+        </div>
+        <span class="badge" th:text="${clientesActivos}">248</span>
+      </a>
+      <a th:href="@{/admin/logout}" class="sidebar-logout">
+        <i class="ti ti-logout"></i>
+        Cerrar sesión
+      </a>
+  </nav>
+    <div class="admin-body">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+
+        <div class="sidebar-admin">
+          <p class="label">Administrador</p>
+          <p class="name" th:text="${adminNombre}">Carlos López</p>
+          <p class="role" th:text="${adminRol}">Super Admin</p>
+        </div>
+
+        <p class="sidebar-section-label">General</p>
+        <a th:href="@{/admin/dashboard}" class="sidebar-item">
+          <div class="sidebar-item-left">
+            <i class="ti ti-layout-dashboard"></i>
+            Dashboard
+          </div>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <p class="sidebar-section-label">Catálogo</p>
+        <a th:href="@{/admin/productos}" class="sidebar-item">
+          <div class="sidebar-item-left">
+            <i class="ti ti-shirt"></i>
+            Productos
+          </div>
+          <span class="badge" th:text="${totalProductos}">89</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <p class="sidebar-section-label">Ventas</p>
+        <a th:href="@{/admin/pedidos}" class="sidebar-item active">
+          <div class="sidebar-item-left">
+            <i class="ti ti-package"></i>
+            Pedidos
+          </div>
+          <span class="badge" th:text="${pedidosPendientes}">4</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <p class="sidebar-section-label">Comunidad</p>
+        <a th:href="@{/admin/resenas}" class="sidebar-item">
+          <div class="sidebar-item-left">
+            <i class="ti ti-message-circle"></i>
+            Reseñas
+          </div>
+          <span class="badge" th:text="${resenasPendientes}">7</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <p class="sidebar-section-label">Clientes</p>
+        <a th:href="@{/admin/clientes}" class="sidebar-item">
+          <div class="sidebar-item-left">
+            <i class="ti ti-users"></i>
+            Clientes
+          </div>
+          <span class="badge" th:text="${totalClientes}">248</span>
+        </a>
+
+      </div>
+
+      <a th:href="@{/admin/logout}" class="sidebar-logout">
+        <i class="ti ti-logout"></i>
+        Cerrar sesión
+      </a>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Pedidos</h1>
+          <p class="page-subtitle" th:text="${totalPedidos + ' pedidos este mes'}">84 pedidos este mes</p>
+        </div>
+      </div>
+
+      <!-- filtros por estado -->
+      <div class="filtros-bar">
+        <a th:href="@{/admin/pedidos(filtro='pendientes')}" class="pill pend">
+          Pendientes (<span th:text="${pedidosPendientes}">4</span>)
+        </a>
+        <a th:href="@{/admin/pedidos}" class="pill active">
+          Todos (<span th:text="${totalPedidos}">84</span>)
+        </a>
+        <a th:href="@{/admin/pedidos(filtro='proceso')}" class="pill">
+          En proceso (<span th:text="${pedidosProceso}">12</span>)
+        </a>
+        <a th:href="@{/admin/pedidos(filtro='enviados')}" class="pill">
+          Enviados (<span th:text="${pedidosEnviados}">58</span>)
+        </a>
+        <a th:href="@{/admin/pedidos(filtro='entregados')}" class="pill">
+          Entregados (<span th:text="${pedidosEntregados}">10</span>)
+        </a>
+      </div>
+      <select class="filter-select-mobile" onchange="window.location.href=this.value">
+        <option value="/admin/pedidos">Todos los estados</option>
+        <option value="/admin/pedidos?filtro=pendientes">Pendientes</option>
+        <option value="/admin/pedidos?filtro=proceso">En proceso</option>
+        <option value="/admin/pedidos?filtro=enviados">Enviados</option>
+        <option value="/admin/pedidos?filtro=entregados">Entregados</option>
+      </select>
+
+      <!-- buscador -->
+      <div class="search-wrap" style="margin-bottom: 16px;">
+        <i class="ti ti-search"></i>
+        <input class="search-input" type="text" placeholder="Buscar por código o cliente...">
+      </div>
+
+      <!-- tabla de pedidos -->
+      <div class="table-card">
+        <table class="pedidos-admin-table">
+          <thead>
+          <tr>
+            <th>Pedido</th>
+            <th>Cliente</th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Estado</th>
+            <th>Pago</th>
+            <th>Acción</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="pedido : ${pedidos}">
+            <td>
+              <span class="pedido-codigo" th:text="${pedido.codigo}">#AUR-0741</span>
+            </td>
+            <td>
+              <div class="cliente-cell">
+                <div class="cliente-avatar" th:text="${#strings.toUpperCase(#strings.substring(pedido.clienteNombre, 0, 2))}">DR</div>
+                <span class="cliente-nombre" th:text="${pedido.clienteNombre}">Diego Ramírez</span>
+              </div>
+            </td>
+            <td th:text="${pedido.fecha}">13 jun 2026</td>
+            <td>
+              <span class="total-val" th:text="${'$' + pedido.total}">$2,350</span>
+            </td>
+            <td>
+                                <span class="estado-badge"
+                                      th:text="${pedido.estado}"
+                                      th:classappend="${pedido.estado == 'Enviado'} ? 'estado-enviado' : (${pedido.estado == 'En proceso'} ? 'estado-proceso' : (${pedido.estado == 'Entregado'} ? 'estado-entregado' : 'estado-pendiente'))">
+                                    Enviado
+                                </span>
+            </td>
+            <td th:text="${pedido.metodoPago}">Tarjeta</td>
+            <td>
+              <div class="row-actions">
+                <a th:href="@{/admin/pedidos/detalle(id=${pedido.id})}" class="act-btn" title="Ver detalle">
+                  <i class="ti ti-eye"></i>
+                </a>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="table-footer">
+                    <span class="table-info" th:text="'Mostrando ' + ${pedidos.size()} + ' de ' + ${totalPedidos} + ' pedidos'">
+                        Mostrando 6 de 84 pedidos
+                    </span>
+          <div class="pagination">
+            <span class="page-btn"><i class="ti ti-chevron-left"></i></span>
+            <span class="page-btn active">1</span>
+            <span class="page-btn">2</span>
+            <span class="page-btn">3</span>
+            <span class="page-btn"><i class="ti ti-chevron-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>

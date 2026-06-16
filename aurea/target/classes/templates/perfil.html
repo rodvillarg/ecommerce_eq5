@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Cuenta — Aurea</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/variables.css">
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="stylesheet" href="/styles/perfil.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <input type="checkbox" id="menu-toggle">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <span class="logo__au">Au</span><span class="logo__rea">rea</span>
+    </a>
+    <nav class="main-nav">
+      <a href="/">Inicio</a>
+      <a href="/productos">Hombre</a>
+      <a href="/productos">Novedades</a>
+      <a href="/productos">Sale</a>
+    </nav>
+    <div class="header-right">
+      <a href="#" class="hbtn" aria-label="Buscar">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+      </a>
+      <a href="/perfil" class="hbtn" aria-label="Mi cuenta">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+      </a>
+      <a href="/bolsa-compra" class="hbtn" aria-label="Bolsa de compra">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span class="cart-dot">0</span>
+      </a>
+    </div>
+    <label for="menu-toggle" class="menu-button" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </label>
+  </div>
+  <nav class="mobile-nav">
+    <a href="/">Inicio</a>
+    <a href="/productos">Hombre</a>
+    <a href="/productos">Novedades</a>
+    <a href="/productos">Sale</a>
+  </nav>
+</header>
+
+<!-- Hero perfil -->
+<section class="perfil-hero">
+  <div class="perfil-hero__avatar" th:text="${#strings.toUpperCase(#strings.substring(usuario.nombre, 0, 1) + #strings.substring(usuario.apellido, 0, 1))}">DR</div>
+  <div class="perfil-hero__info">
+    <p class="perfil-hero__nombre" th:text="${usuario.nombre + ' ' + usuario.apellido}">Diego Ramírez</p>
+    <p class="perfil-hero__email" th:text="${usuario.email}">diego.r@email.com</p>
+    <p class="perfil-hero__miembro" th:text="${'Miembro desde ' + usuario.fechaRegistro}">Miembro desde enero 2026</p>
+  </div>
+</section>
+
+<!-- Body -->
+<div class="perfil-body">
+
+  <!-- Nav lateral -->
+  <nav class="perfil-nav">
+    <a href="/perfil" class="perfil-nav__item active">
+      <i class="ti ti-package"></i>
+      Mis pedidos
+    </a>
+    <div class="perfil-nav__divider"></div>
+    <a href="/perfil" class="perfil-nav__item">
+      <i class="ti ti-user"></i>
+      Mi perfil
+    </a>
+    <div class="perfil-nav__divider"></div>
+    <a href="/perfil" class="perfil-nav__item">
+      <i class="ti ti-map-pin"></i>
+      Mis direcciones
+    </a>
+    <div class="perfil-nav__divider"></div>
+    <a href="/logout" class="perfil-nav__logout">
+      <i class="ti ti-logout"></i>
+      Cerrar sesión
+    </a>
+  </nav>
+
+  <!-- Contenido principal -->
+  <main class="perfil-content">
+
+    <!-- Sección: mis pedidos -->
+    <section class="perfil-section">
+      <h2 class="perfil-section__title">Mis pedidos</h2>
+      <p class="perfil-section__sub">Historial de tus compras en Aurea</p>
+
+      <article th:each="pedido : ${pedidos}" class="pedido-card">
+        <div class="pedido-card__top">
+          <span class="pedido-card__codigo" th:text="${pedido.codigo}">#AUR-0741</span>
+          <span class="estado-badge"
+                th:text="${pedido.estado}"
+                th:classappend="${pedido.estado == 'Enviado'} ? 'estado-enviado' : (${pedido.estado == 'En proceso'} ? 'estado-proceso' : 'estado-entregado')">
+                        Enviado
+                    </span>
+        </div>
+        <p class="pedido-card__items" th:text="${pedido.items}">Blazer Negro Casual, Jean Baggy Azul</p>
+        <div class="pedido-card__bottom">
+          <span class="pedido-card__total" th:text="${'$' + pedido.total}">$2,350</span>
+          <span class="pedido-card__fecha" th:text="${pedido.fecha}">13 jun 2026</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- Sección: mi perfil -->
+    <section class="perfil-section">
+      <h2 class="perfil-section__title">Mi perfil</h2>
+      <p class="perfil-section__sub">Actualiza tu información personal</p>
+
+      <form th:action="@{/perfil/actualizar}" method="post">
+        <div class="perfil-form-grid">
+          <div class="perfil-campo">
+            <label class="perfil-campo__label">Nombre</label>
+            <input class="perfil-campo__input" type="text" name="nombre" th:value="${usuario.nombre}">
+          </div>
+          <div class="perfil-campo">
+            <label class="perfil-campo__label">Apellido</label>
+            <input class="perfil-campo__input" type="text" name="apellido" th:value="${usuario.apellido}">
+          </div>
+          <div class="perfil-campo">
+            <label class="perfil-campo__label">Teléfono</label>
+            <input class="perfil-campo__input" type="text" name="telefono" th:value="${usuario.telefono}">
+          </div>
+          <div class="perfil-campo">
+            <label class="perfil-campo__label">Correo electrónico</label>
+            <input class="perfil-campo__input" type="email" th:value="${usuario.email}" disabled>
+            <span class="form-hint">El correo no puede modificarse</span>
+          </div>
+        </div>
+        <button type="submit" class="btn-save">Guardar cambios</button>
+      </form>
+    </section>
+
+    <!-- Sección: mis direcciones -->
+    <section class="perfil-section">
+      <h2 class="perfil-section__title">Mis direcciones</h2>
+      <p class="perfil-section__sub">Direcciones guardadas para tus envíos</p>
+
+      <article th:each="direccion : ${direcciones}" class="direccion-card">
+        <div class="direccion-card__info">
+          <span class="direccion-card__badge" th:text="${direccion.tipo}">Principal</span>
+          <p class="direccion-card__nombre" th:text="${direccion.nombre}">Diego Ramírez</p>
+          <p th:text="${direccion.calle}">Calle Yañez 123, Col. Centro</p>
+          <p th:text="${direccion.ciudad + ', ' + direccion.estado + ', ' + direccion.cp}">Ciudad Obregón, Sonora, 85000</p>
+          <p th:text="${direccion.telefono}">+52 644 123 4567</p>
+        </div>
+        <div class="direccion-card__actions">
+          <a th:href="@{/perfil/direccion/editar(id=${direccion.id})}" class="dir-btn">Editar</a>
+          <a th:href="@{/perfil/direccion/eliminar(id=${direccion.id})}" class="dir-btn danger">Eliminar</a>
+        </div>
+      </article>
+
+      <a href="/perfil/direccion/nueva" class="btn-add-dir">
+        <i class="ti ti-plus"></i> Agregar dirección
+      </a>
+    </section>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div>
+      <p class="fcol-title">Aurea</p>
+      <div class="fcol-links">
+        <a href="/productos">Nueva Colección</a>
+        <a href="/productos">Camisas</a>
+        <a href="/productos">Polos</a>
+        <a href="/productos">Pantalones</a>
+        <a href="/productos">Sale</a>
+      </div>
+    </div>
+    <div>
+      <p class="fcol-title">Ayuda</p>
+      <div class="fcol-links">
+        <a href="#">Guía de Tallas</a>
+        <a href="#">Envíos y Devoluciones</a>
+        <a href="#">Preguntas Frecuentes</a>
+        <a href="#">Contacto</a>
+      </div>
+    </div>
+    <div>
+      <p class="fcol-title">Empresa</p>
+      <div class="fcol-links">
+        <a href="#">Sobre Aurea</a>
+        <a href="#">Sustentabilidad</a>
+        <a href="#">Trabaja con Nosotros</a>
+        <a href="#">Prensa</a>
+      </div>
+    </div>
+    <div>
+      <p class="fcol-title">Síguenos</p>
+      <div class="fcol-links">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">Pinterest</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Aurea. Todos los derechos reservados.</p>
+    <div class="fpays">
+      <span>VISA</span><span>MC</span><span>AMEX</span><span>OXXO</span><span>PayPal</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
