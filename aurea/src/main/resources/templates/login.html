@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurea — Iniciar sesión</title>
+    <title>Aurea - Iniciar sesión</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -33,16 +33,6 @@
     <div class="auth-form-side">
         <div class="auth-form-wrap">
 
-            <!-- tabs -->
-            <div class="auth-tabs">
-                <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">
-                    Iniciar sesión
-                </button>
-                <button class="auth-tab" id="tab-registro" onclick="switchTab('registro')">
-                    Crear cuenta
-                </button>
-            </div>
-
             <!-- Panel login -->
             <div class="auth-panel active" id="panel-login">
                 <h1 class="auth-title">Bienvenido de vuelta</h1>
@@ -65,51 +55,7 @@
 
                 <div class="auth-switch">
                     ¿No tienes cuenta?
-                    <button onclick="switchTab('registro')">Crear una ahora</button>
-                </div>
-            </div>
-
-            <!-- Panel registro -->
-            <div class="auth-panel" id="panel-registro">
-                <h1 class="auth-title">Crea tu cuenta</h1>
-                <p class="auth-sub">Completa tus datos para registrarte.</p>
-
-                <form action="/registro" method="post">
-                    <div class="form-group">
-                        <label for="reg-nombre">Nombre completo</label>
-                        <input type="text" id="reg-nombre" name="nombre" placeholder="Juan Pérez" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="reg-email">Correo electrónico</label>
-                        <input type="email" id="reg-email" name="correo" placeholder="tu@correo.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="reg-telefono">Teléfono</label>
-                        <input type="tel" id="reg-telefono" name="telefono" placeholder="6441234567">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="reg-password">Contraseña</label>
-                            <input type="password" id="reg-password" name="contrasena" placeholder="••••••••" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="reg-confirm">Confirmar</label>
-                            <input type="password" id="reg-confirm" name="confirmar" placeholder="••••••••" required>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="auth-btn">Crear cuenta</button>
-                </form>
-
-                <p class="auth-terms">
-                    Al registrarte aceptas nuestros
-                    <a href="#">Términos de uso</a> y
-                    <a href="#">Política de privacidad</a>.
-                </p>
-
-                <div class="auth-switch">
-                    ¿Ya tienes cuenta?
-                    <button onclick="switchTab('login')">Inicia sesión</button>
+                    <a href="/registro">Crear una ahora</a>
                 </div>
             </div>
 

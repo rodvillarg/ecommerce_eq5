@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pedidos — Aurea Admin</title>
+  <title>Pedidos - Aurea Admin</title>
   <link rel="stylesheet" th:href="@{/styles/variables.css}">
   <link rel="stylesheet" th:href="@{/styles/admin-styles.css}">
 
@@ -213,7 +213,6 @@
             <th>Total</th>
             <th>Estado</th>
             <th>Pago</th>
-            <th>Acción</th>
           </tr>
           </thead>
           <tbody>
@@ -239,13 +238,7 @@
                                 </span>
             </td>
             <td th:text="${pedido.metodoPago}">Tarjeta</td>
-            <td>
-              <div class="row-actions">
-                <a th:href="@{/admin/pedidos/detalle(id=${pedido.id})}" class="act-btn" title="Ver detalle">
-                  <i class="ti ti-eye"></i>
-                </a>
-              </div>
-            </td>
+
           </tr>
           </tbody>
         </table>

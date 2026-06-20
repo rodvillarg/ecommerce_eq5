@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reseñas — Aurea Admin</title>
+    <title>Reseñas - Aurea Admin</title>
     <link rel="stylesheet" th:href="@{/styles/variables.css}">
     <link rel="stylesheet" th:href="@{/styles/admin-styles.css}">
 
@@ -184,6 +184,12 @@
                     Aprobadas (<span th:text="${resenasAprobadas}">17</span>)
                 </a>
             </div>
+
+            <select class="filter-select-mobile" onchange="window.location.href=this.value">
+                <option value="/admin/resenas">Todas las reseñas</option>
+                <option value="/admin/resenas?filtro=pendientes">Pendientes</option>
+                <option value="/admin/resenas?filtro=aprobadas">Aprobadas</option>
+            </select>
 
 
             <div class="resenas-grid">

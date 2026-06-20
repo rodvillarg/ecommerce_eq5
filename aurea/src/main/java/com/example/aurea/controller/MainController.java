@@ -29,6 +29,7 @@ public class MainController {
     public String registro() {
         return "registro";
     }
+    
 
     @GetMapping({"/productos","/productos.html"})
     public String productos() {

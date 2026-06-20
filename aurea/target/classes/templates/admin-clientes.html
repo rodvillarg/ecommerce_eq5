@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clientes — Aurea Admin</title>
+  <title>Clientes - Aurea Admin</title>
   <link rel="stylesheet" th:href="@{/styles/variables.css}">
   <link rel="stylesheet" th:href="@{/styles/admin-styles.css}">
 
@@ -180,6 +180,11 @@
           <a th:href="@{/admin/clientes(filtro='activos')}" class="pill">Activos</a>
           <a th:href="@{/admin/clientes(filtro='inactivos')}" class="pill">Inactivos</a>
         </div>
+          <select class="filter-select-mobile" onchange="window.location.href=this.value">
+              <option value="/admin/clientes">Todos</option>
+              <option value="/admin/clientes?filtro=activos">Activos</option>
+              <option value="/admin/clientes?filtro=inactivos">Inactivos</option>
+          </select>
       </div>
 
       <!-- tabla de clientes -->
@@ -222,9 +227,7 @@
             </td>
             <td>
               <div class="row-actions">
-                <a th:href="@{/admin/clientes/detalle(id=${cliente.id})}" class="act-btn" title="Ver detalle">
-                  <i class="ti ti-eye"></i>
-                </a>
+
                 <a th:href="@{/admin/clientes/bloquear(id=${cliente.id})}" class="act-btn danger" title="Bloquear">
                   <i class="ti ti-ban"></i>
                 </a>
